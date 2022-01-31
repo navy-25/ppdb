@@ -59,7 +59,7 @@
             var myCarousel = document.querySelector('#banner_carrousel')
             var carousel = new bootstrap.Carousel(myCarousel, {
                 wrap: true,
-                interval: 2500,
+                interval: 10000,
             })
         </script>
     </head>
