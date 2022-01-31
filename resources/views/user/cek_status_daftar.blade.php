@@ -1,6 +1,6 @@
 @extends('layouts.landing')
 @section('title')
-Penerimaan Peserta Didik Baru
+Cek Status Daftar
 @endsection
 @section('css')
 <style>
@@ -13,7 +13,7 @@ Penerimaan Peserta Didik Baru
         margin-top: 20px;
     }
     .carousel-item {
-        height: 650px;
+        height: 600px;
         background-position: center !important;
         background-repeat: no-repeat !important;
         background-size: cover !important;
@@ -35,7 +35,7 @@ Penerimaan Peserta Didik Baru
         background: black !important;
         filter:opacity(70%);
         width:100%;
-        height:650px;
+        height:600px;
         z-index:3;
     }
     .text-header{
@@ -122,74 +122,6 @@ Penerimaan Peserta Didik Baru
 </style>
 @endsection
 @section('content')
-<div class="container-fluid">
-    <div class="row px-4">
-        <div class="col-12 text-center font-weight-bold h4 mb-3">Informasi Calon Siswa Baru</div>
-        <div class="col-12 mb-3">
-            <hr class="" style="width: 100px">
-        </div>
-        <div class="col-lg-4 col-md-6 col-6 text-center grid-margin stretch-card mb-1">
-            <a href="{{ route('syarat_pendaftaran') }}" class="grid-margin stretch-card  w-100">
-                <div class="card">
-                    <div class="card-body">
-                        <i class="mb-4 text-warning" width="50" height="50" data-feather="clipboard"></i>
-                        <p class="text-black font-weight-bold">Syarat Pendaftaran</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-6 col-6 text-center grid-margin stretch-card mb-1">
-            <a href="{{ route('jadwal') }}" class="grid-margin stretch-card  w-100">
-                <div class="card">
-                    <div class="card-body">
-                        <i class="mb-4 text-warning" width="50" height="50" data-feather="calendar"></i>
-                        <p class="text-black font-weight-bold">Jadwal</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-6 col-6 text-center grid-margin stretch-card mb-1">
-            <a href="{{ route('biaya') }}" class="grid-margin stretch-card  w-100">
-                <div class="card">
-                    <div class="card-body">
-                        <i class="mb-4 text-warning" width="50" height="50" data-feather="dollar-sign"></i>
-                        <p class="text-black font-weight-bold">Biaya</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-6 col-6 text-center grid-margin stretch-card mb-1">
-            <a href="" class="grid-margin stretch-card  w-100">
-                <div class="card">
-                    <div class="card-body">
-                        <i class="mb-4 text-warning" width="50" height="50" data-feather="book-open"></i>
-                        <p class="text-black font-weight-bold">Booklet</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-6 col-6 text-center grid-margin stretch-card mb-1">
-            <a href="{{ route('alur_pendaftaran') }}" class="grid-margin stretch-card  w-100">
-                <div class="card">
-                    <div class="card-body">
-                        <i class="mb-4 text-warning" width="50" height="50" data-feather="layers"></i>
-                        <p class="text-black font-weight-bold">Alur Pendaftaran</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-6 col-6 text-center grid-margin stretch-card mb-1">
-            <a href="{{ route('cek_status_pendaftaran') }}" class="grid-margin stretch-card  w-100">
-                <div class="card">
-                    <div class="card-body">
-                        <i class="mb-4 text-warning" width="50" height="50" data-feather="search"></i>
-                        <p class="text-black font-weight-bold">Cek Status Daftar</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
 @endsection
 @section('footer')
     <div class="bg-warning-gradient row px-4 py-4">
@@ -217,19 +149,19 @@ Penerimaan Peserta Didik Baru
                 </div>
                 <div class="col-12 col-lg-6 col-md-6">
                     <p class="text-white  mb-2">
-                        <a href="{{ route('syarat_pendaftaran') }}" class="text-white" style="text-decoration: none">
+                        <a href="" class="text-white" style="text-decoration: none">
                             <i class="text-white mr-2" width="13" height="13" data-feather="clipboard"></i>
                             Syarat Pendaftaran
                         </a>
                     </p>
                     <p class="text-white  mb-2">
-                        <a href="{{ route('jadwal') }}" class="text-white" style="text-decoration: none">
+                        <a href="" class="text-white" style="text-decoration: none">
                             <i class="text-white mr-2" width="13" height="13" data-feather="calendar"></i>
                             Jadwal
                         </a>
                     </p>
                     <p class="text-white  mb-2">
-                        <a href="{{ route('biaya') }}" class="text-white" style="text-decoration: none">
+                        <a href="" class="text-white" style="text-decoration: none">
                             <i class="text-white mr-2" width="13" height="13" data-feather="dollar-sign"></i>
                             Biaya
                         </a>
@@ -243,15 +175,15 @@ Penerimaan Peserta Didik Baru
                 </div>
                 <div class="col-12 col-lg-6 col-md-6">
                     <p class="text-white  mb-2">
-                        <a href="{{ route('alur_pendaftaran') }}" class="text-white" style="text-decoration: none">
+                        <a href="" class="text-white" style="text-decoration: none">
                             <i class="text-white mr-2" width="13" height="13" data-feather="layers"></i>
                             Alur Pendaftaran
                         </a>
                     </p>
                     <p class="text-white  mb-2">
-                        <a href="{{ route('cek_status_pendaftaran') }}" class="text-white" style="text-decoration: none">
+                        <a href="" class="text-white" style="text-decoration: none">
                             <i class="text-white mr-2" width="13" height="13" data-feather="search"></i>
-                            Cek Status Pendaftaran
+                            Pengumuman
                         </a>
                     </p>
                     <p class="text-white  mb-2">

@@ -52,13 +52,23 @@
                 }
             }
         </style>
+        <script src="{{ asset('/assets/js/carousel-rtl.js') }}"></script>
+        <script src="{{ asset('/assets/js/carousel.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script>
+            var myCarousel = document.querySelector('#banner_carrousel')
+            var carousel = new bootstrap.Carousel(myCarousel, {
+                wrap: true,
+                interval: 2500,
+            })
+        </script>
     </head>
     <body>
         <div class="nav-bar-bottom text-center d-flex">
             <a href="" class="text-white p-3" style="text-decoration: none;width:calc(100vw/3)">
                 <p class="text-black font-weight-bold py-2 w-100 h-100">Daftar</p>
             </a>
-            <a href="" class="text-white p-2" style="text-decoration: none;width:calc(100vw/3)">
+            <a href="{{ route('cek_status_pendaftaran') }}" class="text-white p-2" style="text-decoration: none;width:calc(100vw/3)">
                 <i class="text-warning py-2 w-100 h-100 " width="40" height="40" data-feather="search"></i>
             </a>
             <a href="{{ route('login') }}" class="text-white p-3" style="text-decoration: none;width:calc(100vw/3)">
@@ -72,7 +82,6 @@
                     @yield('content')
                 </div>
                 @yield('footer')
-                @include('includes.footer')
             </div>
         </div>
         @include('includes.script')
