@@ -2,7 +2,7 @@
     <script>
         Swal.fire({
             icon: 'success',
-            title: 'Success',
+            title: 'Berhasil',
             text: '{{ $message }}',
             showConfirmButton: false,
             timer: 1500
@@ -12,7 +12,7 @@
     <script>
         Swal.fire({
             icon: 'error',
-            title: 'Try again',
+            title: 'Gagal',
             text: '{{ $message }}',
             showConfirmButton: false,
             timer: 4500

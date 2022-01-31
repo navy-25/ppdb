@@ -1,6 +1,6 @@
 <nav class="sidebar">
     <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">Vote<span>Apps</span></a>
+        <a href="#" class="sidebar-brand">MAN 1<span> PPDB</span></a>
         <div class="sidebar-toggler not-active">
             <span></span>
             <span></span>
@@ -13,122 +13,76 @@
             <li class="nav-item @yield('dashboard')">
                 <a href="{{ route('home') }}" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
-                    <span class="link-title">Dashboard</span>
+                    <span class="link-title">Beranda</span>
                 </a>
             </li>
-            <li class="nav-item nav-category">Voting</li>
+            <li class="nav-item">
+                <a href="{{ route('web_ppdb') }}" class="nav-link">
+                    <i class="link-icon" data-feather="globe"></i>
+                    <span class="link-title">Visit Website</span>
+                </a>
+            </li>
+            <li class="nav-item nav-category">PPDB</li>
             <li class="nav-item ">
-                <a class="nav-link" data-toggle="collapse" href="#token" role="button" aria-expanded="false" aria-controls="forms">
-                    <i class="link-icon" data-feather="archive"></i>
-                    <span class="link-title">Token</span>
+                <a class="nav-link" data-toggle="collapse" href="#ppdb" role="button" aria-expanded="false" aria-controls="forms">
+                    <i class="link-icon" data-feather="users"></i>
+                    <span class="link-title">Data Calon Peserta</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse" id="token">
+                @php
+                    $total['calon_regular'] = \App\Models\CalonPeserta::where('jalur', 'Regular')->where('status','Calon Pendaftar')->count();
+                    $total['calon_undangan'] = \App\Models\CalonPeserta::where('jalur', 'Undangan')->where('status','Calon Pendaftar')->count();
+                @endphp
+                <div class="collapse" id="ppdb">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('all_token') }}" class="nav-link @yield('all_token')">All @yield('token-badge-all')</a>
+                            <a href="{{ route('calon_regular') }}" class="nav-link @yield('regular')">Reguler ({{ $total['calon_regular'] }})</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('unused_token') }}" class="nav-link @yield('unused_token')">Unused @yield('token-badge-unused')</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('used_token') }}" class="nav-link @yield('used_token')">Used @yield('token-badge-used')</a>
+                            <a href="{{ route('calon_undangan') }}" class="nav-link @yield('undangan')">Undangan ({{ $total['calon_undangan'] }})</a>
                         </li>
                     </ul>
                 </div>
             </li>
-            <li class="nav-item @yield('candidate')">
-                <a href="{{ route('candidates') }}" class="nav-link ">
-                    <i class="link-icon" data-feather="users"></i>
-                    <span class="link-title">Candidate</span>
-                </a>
-            </li>
-            <li class="nav-item @yield('voting')">
-                <a href="{{ route('voting') }}" class="nav-link">
-                    <i class="link-icon" data-feather="check-circle"></i>
-                    <span class="link-title">Voting</span>
-                </a>
-            </li>
-            <li class="nav-item @yield('report')">
+            <li class="nav-item @yield('peserta_tes')">
                 <a href="" class="nav-link">
                     <i class="link-icon" data-feather="book"></i>
-                    <span class="link-title">Report</span>
+                    <span class="link-title">Data Peserta Tes</span>
                 </a>
             </li>
-            <li class="nav-item @yield('traffic')">
-                <a href="" class="nav-link">
-                    <i class="link-icon" data-feather="globe"></i>
-                    <span class="link-title">Traffic</span>
+            <li class="nav-item @yield('peserta_lolos')">
+                <a href="{{ route('peserta_lolos') }}" class="nav-link">
+                    <i class="link-icon" data-feather="user-check"></i>
+                    <span class="link-title">Data Peserta Lolos</span>
                 </a>
             </li>
-            <li class="nav-item @yield('settings')">
-                <a href="{{ route('settings') }}" class="nav-link">
-                    <i class="link-icon" data-feather="tool"></i>
-                    <span class="link-title">Settings</span>
-                </a>
-            </li>
-            <li class="nav-item nav-category">Services</li>
-            {{-- <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#client" role="button" aria-expanded="false" aria-controls="forms">
-                    <i class="link-icon" data-feather="meh"></i>
-                    <span class="link-title">Client</span>
+            <li class="nav-item ">
+                <a class="nav-link" data-toggle="collapse" href="#laporan" role="button" aria-expanded="false" aria-controls="forms">
+                    <i class="link-icon" data-feather="book"></i>
+                    <span class="link-title">Laporan</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse" id="client">
+                <div class="collapse" id="laporan">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="pages/forms/basic-elements.html" class="nav-link">Subscribed</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/forms/advanced-elements.html" class="nav-link">Time Out</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/forms/editors.html" class="nav-link">Extra Time</a>
+                            <a href="{{ route('cetak_surat') }}" class="nav-link @yield('cetak_surat')">Cetak Surat Pernyataan</a>
                         </li>
                     </ul>
                 </div>
-            </li> --}}
-            <li class="nav-item">
+            </li>
+            <li class="nav-item nav-category">Account</li>
+            <li class="nav-item @yield('akun_pegawai')">
+                <a href="{{ route('akun_pegawai') }}" class="nav-link">
+                    <i class="link-icon" data-feather="user"></i>
+                    <span class="link-title">Akun pegawai</span>
+                </a>
+            </li>
+            {{-- <li class="nav-item">
                 <a href="" class="nav-link">
-                    <i class="link-icon" data-feather="dollar-sign"></i>
-                    <span class="link-title">Price</span>
-                </a>
-            </li>
-            <li class="nav-item nav-category">Settings</li>
-            <li class="nav-item @yield('manage_user')">
-                <a href="{{ route('manage_users') }}" class="nav-link">
-                    <i class="link-icon" data-feather="users"></i>
-                    <span class="link-title">Manage Users</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('account') }}" class="nav-link">
                     <i class="link-icon" data-feather="user"></i>
                     <span class="link-title">My Account</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </nav>
-{{-- <nav class="settings-sidebar">
-    <div class="sidebar-body">
-        <a href="#" class="settings-sidebar-toggler">
-            <i data-feather="settings"></i>
-        </a>
-        <h6 class="text-muted">Sidebar:</h6>
-        <div class="form-group">
-            <div class="form-check form-check-inline">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarLight" value="sidebar-light" checked>
-                    Light
-                </label>
-            </div>
-            <div class="form-check form-check-inline">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarDark" value="sidebar-dark">
-                    Dark
-                </label>
-            </div>
-        </div>
-    </div>
-</nav> --}}

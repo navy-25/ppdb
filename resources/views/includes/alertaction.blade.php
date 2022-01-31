@@ -2,12 +2,12 @@
     function are_you_sure(title,url,confirm_title){
         event.preventDefault();
         Swal.fire({
-            title:'Are you sure '+title+'?',
-            text:  'You won t be able to revert this',
+            title:'Apakah kamu yakin '+title+'?',
+            text:  'Pertimbangkan kembali jika anda ingin merubah atau menghapus data',
             icon: 'warning',
             showConfirmButton: true,
             showCancelButton: true,
-            cancelButtonText: "Cancel",
+            cancelButtonText: "Batal",
             confirmButtonText: confirm_title,
             confirmButtonColor: "#dc3545",
             cancelButtonColor: "#c8c8c8",

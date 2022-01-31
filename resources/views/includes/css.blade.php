@@ -3,15 +3,26 @@
         font-family: 'Poppins' !important;
     }
 
+    .noble-ui-logo span {
+        color: #ff9c22;
+        font-weight: 300;
+    }
+    .text-orange{
+        color: #ff9c22 !important;
+
+    }
     .bg-primary-gradient{
         background: linear-gradient(153.85deg, #5E50F9 0%, #9150f9 98.59%) !important;
     }
     .bg-info-gradient{
         background: linear-gradient(153.85deg, #66d1d1 0%, #3eb99a 98.59%) !important;
     }
+    .bg-warning-gradient{
+        background: linear-gradient(153.85deg, #ff9c22 0%, #d17b11 98.59%) !important;
+    }
     .card-member{
         height:150px;
-        border: 1px solid #727cf5;
+        border: 1px solid #ff9c22;
     }
     .image-profile{
         width: 100%;
@@ -44,22 +55,110 @@
         background-repeat: no-repeat;
         border-radius: 15px;
     }
+    .btn-inverse-info:hover{
+        color:white !important;
+    }
+    .sidebar .sidebar-header .sidebar-brand span {
+        color: #ff9c22 !important;
+    }
+    .sidebar .sidebar-body .nav .nav-item.active .nav-link::before,
+    .btn-warning{
+        background-color: #ff9c22 !important;
+    }
+    .btn-outline-warning{
+        border-color: #ff9c22 !important;
+        color:#ff9c22 !important;
+    }
+    .btn-outline-warning:hover{
+        background-color: #ff9c22 !important;
+        color:white !important;
+    }
 
+    .sidebar .sidebar-body .nav .nav-item .nav-link[aria-expanded="true"] {
+        color:#ff9c22 !important;
+    }
+
+    .sidebar .sidebar-body .nav .nav-item.active .nav-link .link-title,
+    .sidebar .sidebar-body .nav .nav-item.active .nav-link .link-arrow,
+    .sidebar .sidebar-body .nav .nav-item.active .nav-link .link-icon{
+        color:#ff9c22 !important;
+    }
+    .sidebar .sidebar-body .nav .nav-item:hover .nav-link .link-title,
+    .sidebar .sidebar-body .nav .nav-item:hover .nav-link .link-arrow,
+    .sidebar .sidebar-body .nav .nav-item:hover .nav-link .link-icon{
+        color:#ff9c22 !important;
+    }
+    .sidebar .sidebar-body .nav .nav.sub-menu .nav-item .nav-link.active{
+        color:#ff9c22 !important;
+    }
+    .sidebar .sidebar-body .nav.sub-menu .nav-item .nav-link.active::before {
+        color:#ff9c22 !important;
+        border :1px solid #ff9c22 !important;
+        background-color:#ff9c22 !important;
+    }
+    .sidebar .sidebar-body .nav .nav.sub-menu .nav-item .nav-link{
+        color:rgb(66, 66, 66) !important;
+    }
+    .sidebar .sidebar-body .nav.sub-menu .nav-item .nav-link::before {
+        color:rgb(66, 66, 66) !important;
+        border :none !important;
+        background-color: rgb(66, 66, 66) !important
+    }
     .swal2-popup { width: 20em; border-radius: 15px; }
     .alert,.card{ border-radius: 10px; }
     .modal-content{ border-radius: 15px !important; }
     .text-gray{ color: #979797; }
     select.form-control, select, .email-compose-fields .select2-container--default select.select2-selection--multiple, .select2-container--default select.select2-selection--single, .select2-container--default .select2-selection--single select.select2-search__field, select.typeahead, select.tt-query, select.tt-hint { border-radius: 15px; }
     .form-control-sm { border-radius: 15px; }
+    .form-control:active,.form-control:focus{ border-color: #ff9c22 !important; }
     .swal2-modal .swal2-actions button.swal2-cancel:focus,.btn-danger:not(:disabled):not(.disabled):active:focus, .swal2-modal .swal2-actions button.swal2-cancel:not(:disabled):not(.disabled):active:focus, .btn-danger:not(:disabled):not(.disabled).active:focus, .swal2-modal .swal2-actions button.swal2-cancel:not(:disabled):not(.disabled).active:focus, .show > .btn-danger.dropdown-toggle:focus, .swal2-modal .swal2-actions .show > button.dropdown-toggle.swal2-cancel:focus {box-shadow: 0 0 0 0.2rem rgb(255 255 255 / 0%);}
     .swal2-modal .swal2-actions button.swal2-confirm:focus,.btn-primary:not(:disabled):not(.disabled):active:focus, .swal2-modal .swal2-actions button.swal2-confirm:not(:disabled):not(.disabled):active:focus, .wizard > .actions a:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .swal2-modal .swal2-actions button.swal2-confirm:not(:disabled):not(.disabled).active:focus, .wizard > .actions a:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus, .swal2-modal .swal2-actions .show > button.dropdown-toggle.swal2-confirm:focus, .wizard > .actions .show > a.dropdown-toggle:focus {box-shadow: 0 0 0 0.2rem rgb(255 255 255 / 0%);}
     .btn-primary, .swal2-modal .swal2-actions button.swal2-confirm, .wizard > .actions a, .wizard > .actions a:hover {border-color: #ffffff00 !important;}
     .border-danger, .swal2-modal .swal2-actions button.swal2-cancel {border-color: #ffffff00 !important;}
 
+    .br-top-left-1{border-top-left-radius: 10px !important;}
+    .br-top-left-2{border-top-left-radius: 20px !important;}
+    .br-top-right-1{border-top-right-radius: 10px !important;}
+    .br-top-right-2{border-top-right-radius: 20px !important;}
+    .br-bottom-left-1{border-bottom-left-radius: 10px !important;}
+    .br-bottom-left-2{border-bottom-left-radius: 20px !important;}
+    .br-bottom-right-1{border-bottom-right-radius: 10px !important;}
+    .br-bottom-right-2{border-bottom-right-radius: 20px !important;}
+
+    table th, table td {
+        white-space: normal !important;
+    }
+
+    .profile-nav .nav-item:hover .nav-link{
+        color:#ff9c22 !important;
+    }
+
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        color: #fff !important;
+        font-weight: 600 !important;
+        background-color: #ff9c22;
+    }
+    .nav-pills .nav-link, .nav-pills .show > .nav-link {
+        color: rgb(66, 66, 66) !important
+    }
+    .nav-pills .nav-link:hover, .nav-pills .show > .nav-link {
+        background: rgba(66, 66, 66, 0.062) !important
+    }
+    .nav-pills .nav-link.active:hover, .nav-pills .show > .nav-link {
+        background: #e98913 !important
+    }
+    .nav-pills .nav-link {
+        border-radius: 10px !important;
+        margin-bottom:20px;
+        margin-right: 15px;
+        font-size:10px !important;
+    }
+
     .page-item.active .page-link {
         z-index: 3;
         color: #fff;
-        background-color: #727cf5 !important;
+        background-color: #ff9c22 !important;
         border-color: transparent !important;
         margin:0px 10px;
         border-radius: 10px;

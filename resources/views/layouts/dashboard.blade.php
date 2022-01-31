@@ -16,8 +16,6 @@
         </title>
         @include('includes.head')
         @include('includes.css')
-
-
     </head>
     <body>
         <div class="main-wrapper">
