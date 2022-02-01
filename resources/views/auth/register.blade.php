@@ -14,7 +14,7 @@ Register Admin
                             </div>
                             <div class="col-md-7 pl-md-0">
                                 <div class="auth-form-wrapper px-4 py-4">
-                                    <a href="#" class="noble-ui-logo d-block mb-2">Admin PPDB <span style="text-orange">Daftar</span></a>
+                                    <a href="#" class="noble-ui-logo d-block mb-2">Admin PPDB <span style="text-green">Daftar</span></a>
                                     <h5 class="text-muted font-weight-normal mb-4">Selamat datang di sistem pengelolaan Peserta Didik Baru MAN 1 Hulu Sungai Tengah</h5>
                                     <form  method="POST" action="{{ route('register') }}">
                                         @csrf
@@ -47,7 +47,7 @@ Register Admin
                                         </div>
                                         <span class="d-block mt-2 text-muted">
                                             Sudah punya akun admin?
-                                            <a href="{{ route('login') }}" class="font-weight-bold text-decoration-none text-orange">
+                                            <a href="{{ route('login') }}" class="font-weight-bold text-decoration-none text-green">
                                                 Masuk
                                             </a>
                                         </span>

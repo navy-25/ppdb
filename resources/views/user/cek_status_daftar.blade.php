@@ -1,199 +1,96 @@
 @extends('layouts.landing')
 @section('title')
-Cek Status Daftar
+Cek Status Pendaftaran
 @endsection
 @section('css')
 <style>
-    html,body{
-        font-family: 'Poppins' !important;
-        margin: 0px !important;
-        padding: 0px !important;
-    }
-    .main-wrapper .page-wrapper .page-content {
-        margin-top: 20px;
-    }
-    .carousel-item {
-        height: 600px;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        background-size: cover !important;
-    }
-    .header{
-        position:absolute;
-        width:100%;
-        height:600px;
-        z-index:2;
-    }
-    .navbar {
-        background: rgba(5, 5, 5, 0.466) !important;
-        border: none !important;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
-    .filter-black{
-        position:absolute;
-        background: black !important;
-        filter:opacity(70%);
-        width:100%;
-        height:600px;
-        z-index:3;
-    }
-    .text-header{
-        position:absolute;
-        z-index:4;
-        padding-top:200px;
-        filter:opacity(100%) !important;
-        padding-left: 50px;
-        width: 90% !important;
-    }
-    .navbar .navbar-nav .nav-item .btn{
-        float: right !important;
-    }
-    .left{
-        margin-left: 0px !important;
+    .header, #banner_carrousel{
         display: none !important;
     }
-    @media (max-width: 991px){
-        .navbar .navbar-content {
-            width: 100% !important;
-        }
-        .text-header{
-            position:absolute;
-            z-index:4;
-            padding-top:100px;
-            filter:opacity(100%) !important;
-            padding-left: 50px;
-            width: 85% !important;
-        }
-        .carousel-item {
-            height: 470px;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            background-size: cover !important;
-        }
-        .filter-black{
-            height:470px;
-        }
-        .img-header{
-            display: none !important;
-        }
+    .card-status-pendaftaran{
+        text-decoration: none;
+        border-radius: 15px;
+        border: 1px solid rgb(186, 186, 186);
+        transition: all 0.8s;
     }
-    @media (max-width: 640px){
-        .navbar .navbar-content{
-            width: 100% !important;
-            height: 100% !important;
-            align-items: center !important;
-        }
-        .left{
-            margin-left: 0px !important;
-            display: block !important;
-        }
-        .carousel-item {
-            height: 620px;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            background-size: cover !important;
-        }
-        .img-carousel{
-            height: 620px !important;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            background-size: cover !important;
-        }
-        .filter-black{
-            height:620px;
-        }
-        .text-header{
-            position:absolute;
-            z-index:4;
-            padding-top:100px;
-            filter:opacity(100%) !important;
-            padding-left: 20px;
-            width: 90% !important;
-        }
-        .img-header{
-            display: none !important;
-        }
-        .search-form{
-            display: none !important;
-            margin: 0px !important;
-        }
+    .card-status-pendaftaran:hover{
+        border: 1px solid #13903d;
+        color: black;
     }
 </style>
 @endsection
 @section('content')
-@endsection
-@section('footer')
-    <div class="bg-warning-gradient row px-4 py-4">
-        <div class="col-12 col-lg-6 col-md mb-4">
-            <div class="row">
-                <div class="col-12 h4 text-white mb-3">
-                    Kontak Kami
-                </div>
-                <div class="col-12">
-                    <p class="text-white  mb-2">
-                        <i class="text-white mr-2" width="13" height="13" data-feather="map-pin"></i>
-                        Jalan Empu Jatmika Sungai Malang Amuntai Tengah 71471 Hulu Sungai Utara Kalimantan Selatan
-                    </p>
-                    <p class="text-white">
-                        <i class="text-white mr-2" width="13" height="13" data-feather="phone"></i>
-                        +62 527 61009
-                    </p>
-                </div>
-            </div>
+<div class="container-fluid">
+    <div class="row px-2 br-1 py-1 mb-5 mt-5" style="background: rgb(230, 230, 230)">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-decoration-none text-black breadcump-black" href="/">Beranda</a></li>
+                <li class="breadcrumb-item active font-weight-bold text-green" aria-current="page">Cek Status Pendaftaran</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center font-weight-bold h4 mb-3">Cek Status Pendaftaran</div>
+        <div class="col-12 mb-3">
+            <hr class="" style="width: 100px">
         </div>
-        <div class="col-12 col-lg-6 col-md">
-            <div class="row">
-                <div class="col-12 h4 text-white mb-3">
-                    Menu
-                </div>
-                <div class="col-12 col-lg-6 col-md-6">
-                    <p class="text-white  mb-2">
-                        <a href="" class="text-white" style="text-decoration: none">
-                            <i class="text-white mr-2" width="13" height="13" data-feather="clipboard"></i>
-                            Syarat Pendaftaran
-                        </a>
-                    </p>
-                    <p class="text-white  mb-2">
-                        <a href="" class="text-white" style="text-decoration: none">
-                            <i class="text-white mr-2" width="13" height="13" data-feather="calendar"></i>
-                            Jadwal
-                        </a>
-                    </p>
-                    <p class="text-white  mb-2">
-                        <a href="" class="text-white" style="text-decoration: none">
-                            <i class="text-white mr-2" width="13" height="13" data-feather="dollar-sign"></i>
-                            Biaya
-                        </a>
-                    </p>
-                    <p class="text-white  mb-2">
-                        <a href="" class="text-white" style="text-decoration: none">
-                            <i class="text-white mr-2" width="13" height="13" data-feather="book-open"></i>
-                            Booklet
-                        </a>
-                    </p>
-                </div>
-                <div class="col-12 col-lg-6 col-md-6">
-                    <p class="text-white  mb-2">
-                        <a href="" class="text-white" style="text-decoration: none">
-                            <i class="text-white mr-2" width="13" height="13" data-feather="layers"></i>
-                            Alur Pendaftaran
-                        </a>
-                    </p>
-                    <p class="text-white  mb-2">
-                        <a href="" class="text-white" style="text-decoration: none">
-                            <i class="text-white mr-2" width="13" height="13" data-feather="search"></i>
-                            Pengumuman
-                        </a>
-                    </p>
-                    <p class="text-white  mb-2">
-                        <a href="{{ route('login') }}" class="text-white" style="text-decoration: none">
-                            <i class="text-white mr-2" width="13" height="13" data-feather="log-in"></i>
-                            Masuk Admin
-                        </a>
-                    </p>
-                </div>
+        <div class="col-12">
+            <div class="row mb-4">
+                <form action="" class="col-12 col-lg-8 col-md-8 mx-auto d-flex">
+                    @csrf
+                    <input type="text" class="w-100 search-status mr-4" name="pencarian" placeholder="Cari berdasarkan nama, nomor pendaftaran, NIS, NISN ...">
+                    <span>
+                        <button type="submit" class="btn btn-green" style="width: 100%; height: 100%;border-radius:100%">
+                            <i class="text-white" data-feather="search"></i>
+                        </button>
+                    </span>
+                </form>
             </div>
+            @if ($data != null)
+                <div class="row mt-5 pt-3 px-3">
+                    @foreach ($data as $x)
+                        <a href="/" class="col-12 col-lg-8 col-md-8 mx-auto bg-white p-4 card-status-pendaftaran mb-3 text-black">
+                            <div class="row">
+                                <div class="col-4 col-lg-2 col-md-2">
+                                    <img src="{{ asset('assets/images/placeholder.jpg') }}" width="80px" height="100px"  style="border-radius: 10px;object-fit:cover" alt="">
+                                </div>
+                                <div class="col-8 col-lg-7 col-md-7">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 mb-2">
+                                            <h5 class="text-green">
+                                                {{ $x->nama_lengkap }}
+                                            </h5>
+                                        </div>
+                                        <div class="col-12 col-lg-6 col-mg-6 mb-2">
+                                            <small>Status</small>
+                                            @if ($x->status == "Lolos")
+                                                <h5 class="text-green">
+                                                    {{ $x->status }}
+                                                </h5>
+                                            @elseif ($x->status == "Calon Pendaftar")
+                                                <h5 class="text-orange">
+                                                    Pengecekan
+                                                </h5>
+                                            @else
+                                                <h5 class="text-danger">
+                                                    Tidak Lolos
+                                                </h5>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-3 col-md-3">
+                                    <button type="button" class="btn btn-green text-white float-right btn-icon-text">
+                                        <span>Check</span>
+                                        <i class="text-white" data-feather="arrow-right" class="btn-icon-prepend ml-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
+</div>
 @endsection

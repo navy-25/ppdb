@@ -2,20 +2,25 @@
     .html{
         font-family: 'Poppins' !important;
     }
-
+    .br-1{border-radius: 10px !important;}
+    .br-2{border-radius: 20px !important;}
+    .br-3{border-radius: 30px !important;}
+    .br-4{border-radius: 40px !important;}
     .noble-ui-logo span {
         color: #ff9c22;
         font-weight: 300;
     }
     .text-orange{
         color: #ff9c22 !important;
-
+    }
+    .breadcump-black:hover{
+        color: black !important;
     }
     .bg-primary-gradient{
         background: linear-gradient(153.85deg, #5E50F9 0%, #9150f9 98.59%) !important;
     }
-    .bg-info-gradient{
-        background: linear-gradient(153.85deg, #66d1d1 0%, #3eb99a 98.59%) !important;
+    .bg-green-gradient{
+        background: linear-gradient(153.85deg, #13903d 0%, #0a772e 98.59%) !important;
     }
     .bg-warning-gradient{
         background: linear-gradient(153.85deg, #ff9c22 0%, #d17b11 98.59%) !important;
@@ -68,9 +73,29 @@
     .btn-outline-warning{
         border-color: #ff9c22 !important;
         color:#ff9c22 !important;
+        box-shadow: none !important;
     }
     .btn-outline-warning:hover{
         background-color: #ff9c22 !important;
+        color:white !important;
+        box-shadow: none !important;
+    }
+    .btn-outline-warning:not(:disabled):not(.disabled):active, .btn-outline-warning:not(:disabled):not(.disabled).active, .show > .btn-outline-warning.dropdown-toggle {
+        background-color: transparent;
+    }
+
+    .text-green{
+        color: #13903d !important;
+    }
+    .btn-green{
+        background-color: #13903d !important;
+    }
+    .btn-outline-green{
+        border-color: #13903d !important;
+        color:#13903d !important;
+    }
+    .btn-outline-green:hover{
+        background-color: #13903d !important;
         color:white !important;
     }
 

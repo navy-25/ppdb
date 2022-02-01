@@ -24,7 +24,7 @@ Login
                                     </div>
                                     <div class="col-md-7 pl-md-0">
                                         <div class="auth-form-wrapper px-4 py-4">
-                                            <a href="#" class="noble-ui-logo d-block mb-2">Admin PPDB <span style="text-orange">Masuk</span></a>
+                                            <a href="#" class="noble-ui-logo d-block mb-2">Admin PPDB <span style="text-green">Masuk</span></a>
                                             <h5 class="text-muted font-weight-normal mb-4">Selamat datang di sistem pengelolaan Peserta Didik Baru MAN 1 Hulu Sungai Tengah</h5>
                                             <form class="forms-sample" id="form_login" method="POST" action="{{ route('login') }}">
                                                 @csrf
@@ -62,7 +62,7 @@ Login
                                 </div>
                                 <div class="col-md-8 pl-md-0">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="noble-ui-logo d-block mb-2">Admin PPDB <span style="text-orange">Masuk</span></a>
+                                        <a href="#" class="noble-ui-logo d-block mb-2">Admin PPDB <span style="text-green">Masuk</span></a>
                                             <h5 class="text-muted font-weight-normal mb-4">Selamat datang admin {{ Auth::user()->name }}!</h5>
                                         <div class="row">
                                             <div class="col-2">

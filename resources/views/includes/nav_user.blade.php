@@ -4,7 +4,7 @@
             <div class="input-group text-white">
                 <p>Assalamu'alaikum
                     <b class="text-orange">Selamat datang di website resmi MAN 1 Hulu Sungai Tengah
-                        <i class="mb-1 text-warning ml-1 icon-small" width="11" height="11" data-feather="heart"></i>
+                        <i class="mb-1 text-orange ml-1 icon-small" width="11" height="11" data-feather="heart"></i>
                     </b>
                 </p>
             </div>
@@ -88,7 +88,7 @@
 </nav>
 <div class="header">
     <div class="filter-black"></div>
-    <div class="text-orange text-header">
+    <div class="text-green text-header">
         <div class="row">
             <div class="col-12 col-md-2 col-lg-2">
                 <img src="{{ asset('assets/images/logo.png') }}" alt="placeholder" class="pt-2 img-header" style="width:120px;float:right !important;">
@@ -96,7 +96,7 @@
             <div class="col-12 col-md-10 col-lg-10">
                 <h1 class="mb-3">Penerimaan Peserta Didik Baru (New Student Admission)</h1>
                 <h3 class="text-white">Madrasah Aliyah Negeri 1 Hulu Sungai Tengah</h3>
-                <button class="mt-4 btn btn-warning text-white">
+                <button class="mt-4 btn btn-green text-white">
                     Daftar Sekarang
                 </button>
             </div>

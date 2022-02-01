@@ -60,7 +60,7 @@ Biodata Peserta Didik Baru
                     Calon Pendaftar Regular
                 </a>
                 <i data-feather="chevron-right" class="btn-icon-prepend mb-1" width="13" stroke-width="2" height="13"></i>
-                <span class="text-orange">{{ $data->nama_lengkap }}</span>
+                <span class="text-green">{{ $data->nama_lengkap }}</span>
             </h6>
         @else
             <h6 class="card-title">
@@ -68,7 +68,7 @@ Biodata Peserta Didik Baru
                     Calon Pendaftar Undangan
                 </a>
                 <i data-feather="chevron-right" class="btn-icon-prepend mb-1" width="13" stroke-width="2" height="13"></i>
-                <span class="text-orange">{{ $data->nama_lengkap }}</span>
+                <span class="text-green">{{ $data->nama_lengkap }}</span>
             </h6>
         @endif
     </div>
@@ -86,7 +86,7 @@ Biodata Peserta Didik Baru
                         @endif
                     </div>
                     <div class="col-5 col-md-12 col-lg-12 text-desc">
-                        <h6 class="text-orange font-weight-bold">
+                        <h6 class="text-green font-weight-bold">
                             {{ $data->nama_lengkap }}
                         </h6>
                         <small>{{ $data->jenis_kelamin == 'L' ? 'Laki-Laki' : 'Perempuan'}} / {{ $count['umur'] }} Tahun</small>
