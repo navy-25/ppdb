@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AlurPendaftaran;
 use App\Models\CalonPeserta;
 use App\Models\CategoryBiaya;
 use App\Models\CategoryPersyaratan;
+use App\Models\Jadwal;
 use Database\Seeders\CategoryPersyaratanSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +24,8 @@ class LandingController extends Controller
     }
     public function jadwal()
     {
-        return view('user.jadwal');
+        $data = Jadwal::first();
+        return view('user.jadwal', compact('data'));
     }
     public function biaya()
     {
@@ -31,7 +34,8 @@ class LandingController extends Controller
     }
     public function alur_pendaftaran()
     {
-        return view('user.alur_pendaftaran');
+        $data = AlurPendaftaran::first();
+        return view('user.alur_pendaftaran', compact('data'));
     }
     public function cek_status_pendaftaran()
     {

@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\AlurPendaftaran;
+use App\Models\Booklet;
 use App\Models\CalonPeserta;
 use App\Models\CategoryPersyaratan;
+use App\Models\Jadwal;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,5 +25,9 @@ class DatabaseSeeder extends Seeder
         $this->call(PersyaratanSeeder::class);
         $this->call(CategoryBiayaSeeder::class);
         $this->call(BiayaSeeder::class);
+
+        Jadwal::create(['file' => 'jadwal_pendaftaran.png']);
+        AlurPendaftaran::create(['file' => 'alur_pendaftaran.png']);
+        Booklet::create(['file' => 'booklet.pdf']);
     }
 }

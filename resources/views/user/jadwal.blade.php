@@ -24,7 +24,7 @@ Jadwal
         </div>
         <div class="col-12 col-lg-9 col-md-9">
             <div class="col-12 mb-1">
-                <img src="{{ asset('assets/uploads/landing/jadwal_pendaftaran.png') }}" width="100%" alt="">
+                <img src="{{ asset('assets/uploads/landing/'.$data->file) }}" width="100%" alt="">
             </div>
         </div>
         <div class="col-12 col-lg-3 col-md-3">

@@ -62,6 +62,16 @@ Route::group(
                         Route::get('/getDataAkunPegwai', [App\Http\Controllers\UsersController::class, 'getDataAkunPegwai'])->name('getDataAkunPegwai');
                     }
                 );
+                Route::prefix('master')->group(
+                    function () {
+                        Route::get('/jadwal-pendaftaran', [App\Http\Controllers\MasterController::class, 'jadwal_pendaftaran'])->name('jadwal_pendaftaran_admin');
+                        Route::post('/jadwal-pendaftaran/update', [App\Http\Controllers\MasterController::class, 'update_jadwal_pendaftaran'])->name('update_jadwal_pendaftaran');
+                        Route::get('/booklet-pendaftaran', [App\Http\Controllers\MasterController::class, 'booklet_pendaftaran'])->name('booklet_pendaftaran_admin');
+                        Route::post('/booklet-pendaftaran/update', [App\Http\Controllers\MasterController::class, 'update_booklet'])->name('update_booklet');
+                        Route::get('/alur-pendaftaran', [App\Http\Controllers\MasterController::class, 'alur_pendaftaran'])->name('alur_pendaftaran_admin');
+                        Route::post('/alur-pendaftaran/update', [App\Http\Controllers\MasterController::class, 'update_alur_pendaftaran'])->name('update_alur_pendaftaran');
+                    }
+                );
             }
         );
     }

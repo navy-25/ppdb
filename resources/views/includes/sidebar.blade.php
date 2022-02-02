@@ -70,6 +70,25 @@
                     </ul>
                 </div>
             </li>
+            <li class="nav-item nav-category">Master</li>
+            <li class="nav-item @yield('jadwal')">
+                <a href="{{ route('jadwal_pendaftaran_admin') }}" class="nav-link">
+                    <i class="link-icon" data-feather="calendar"></i>
+                    <span class="link-title">Jadwal</span>
+                </a>
+            </li>
+            <li class="nav-item @yield('booklet')">
+                <a href="{{ route('booklet_pendaftaran_admin') }}" class="nav-link">
+                    <i class="link-icon" data-feather="book-open"></i>
+                    <span class="link-title">Booklet</span>
+                </a>
+            </li>
+            <li class="nav-item @yield('alur_pendaftaran')">
+                <a href="{{ route('alur_pendaftaran_admin') }}" class="nav-link">
+                    <i class="link-icon" data-feather="layers"></i>
+                    <span class="link-title">Alur Pendaftaran</span>
+                </a>
+            </li>
             <li class="nav-item nav-category">Account</li>
             <li class="nav-item @yield('akun_pegawai')">
                 <a href="{{ route('akun_pegawai') }}" class="nav-link">
