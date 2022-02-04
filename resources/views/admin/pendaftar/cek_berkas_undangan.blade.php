@@ -1,10 +1,10 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Daftar Calon Peserta Didik Baru
+Cek Berkas Peserta Undangan
 @endsection
 
-@section('undangan')
+@section('peserta_lolos')
 active
 @endsection
 
@@ -25,16 +25,14 @@ active
 
         pageLength: 10,
         paging: true,
-        ajax: "{{ route('getDataCalonPendfatar',['jalur'=>'Undangan']) }}",
+        ajax: "{{ route('getDataPesertaUndangan') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'photo', name: 'photo'},
             {data: 'nama_lengkap', name: 'nama_lengkap'},
-            {data: 'no_pendaftaran', name: 'no_pendaftaran'},
-            {data: 'no_peserta', name: 'no_peserta'},
             {data: 'jurusan', name: 'jurusan'},
             {data: 'asal_sekolah', name: 'asal_sekolah'},
-            {data: 'date', name: 'date'},
+            {data: 'ijazah', name: 'ijazah'},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ],
         columnDefs: [
@@ -56,7 +54,7 @@ active
 @section('content')
 <div class="row mb-3">
     <div class="col-12">
-        <h6 class="card-title">Calon Pendaftar Undangan</h6>
+        <h6 class="card-title">Cek Berkas Peserta Undangan</h6>
     </div>
 </div>
 <div class="row">
@@ -70,11 +68,9 @@ active
                                 <th style="width: 5%">No</th>
                                 <th>Foto</th>
                                 <th>Nama Lengkap</th>
-                                <th>No. Pendaftaran</th>
-                                <th>No. Peserta</th>
                                 <th>Jurusan</th>
-                                <th>Tanggal Daftar</th>
                                 <th>Asal Sekolah</th>
+                                <th>Ijazah/Raport</th>
                                 <th style="width: 10%">Action</th>
                             </tr>
                         </thead>

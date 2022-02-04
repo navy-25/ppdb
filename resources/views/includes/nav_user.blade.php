@@ -18,9 +18,9 @@
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <button class="btn btn-warning text-white">
+                <a class="btn btn-warning text-white" href="{{ route('daftar') }}">
                     Daftar
-                </button>
+                </a>
             </li>
             @guest
                 <li class="nav-item">

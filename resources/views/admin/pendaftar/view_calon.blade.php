@@ -1,18 +1,9 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Biodata Peserta Didik Baru
+Biodata Peserta
 @endsection
 
-@if ($data->jalur == 'Regular')
-    @section('regular')
-        active
-    @endsection
-@else
-    @section('undangan')
-        active
-    @endsection
-@endif
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('../../../assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
@@ -54,23 +45,11 @@ Biodata Peserta Didik Baru
 @section('content')
 <div class="row mb-3">
     <div class="col-12">
-        @if ($data->jalur == 'Regular')
-            <h6 class="card-title">
-                <a href="{{ route('calon_regular') }}" class="text-decoration-none text-dark">
-                    Calon Pendaftar Regular
-                </a>
-                <i data-feather="chevron-right" class="btn-icon-prepend mb-1" width="13" stroke-width="2" height="13"></i>
-                <span class="text-green">{{ $data->nama_lengkap }}</span>
-            </h6>
-        @else
-            <h6 class="card-title">
-                <a href="{{ route('calon_undangan') }}" class="text-decoration-none text-dark">
-                    Calon Pendaftar Undangan
-                </a>
-                <i data-feather="chevron-right" class="btn-icon-prepend mb-1" width="13" stroke-width="2" height="13"></i>
-                <span class="text-green">{{ $data->nama_lengkap }}</span>
-            </h6>
-        @endif
+        <h6 class="card-title">
+            Biodata Peserta
+            <i data-feather="chevron-right" class="btn-icon-prepend mb-1" width="13" stroke-width="2" height="13"></i>
+            <span class="text-orange">{{ $data->nama_lengkap }}</span>
+        </h6>
     </div>
 </div>
 <div class="row">
@@ -86,7 +65,7 @@ Biodata Peserta Didik Baru
                         @endif
                     </div>
                     <div class="col-5 col-md-12 col-lg-12 text-desc">
-                        <h6 class="text-green font-weight-bold">
+                        <h6 class="text-orange font-weight-bold">
                             {{ $data->nama_lengkap }}
                         </h6>
                         <small>{{ $data->jenis_kelamin == 'L' ? 'Laki-Laki' : 'Perempuan'}} / {{ $count['umur'] }} Tahun</small>
@@ -103,7 +82,7 @@ Biodata Peserta Didik Baru
     <div class="col-md-9 col-lg-9 col-12 order-md-1 order-lg-1 order-2">
         <div class="card">
             <div class="card-header">
-                <h5 class="font-wight-bold">Biodata Peserta Didik Baru</h5>
+                <h5 class="font-wight-bold">Biodata Peserta</h5>
             </div>
             <div class="card-body">
                 <ul class="nav nav-pills" id="myTab">

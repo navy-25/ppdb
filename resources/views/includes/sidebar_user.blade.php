@@ -25,6 +25,9 @@
         Cek Status Daftar
     </a>
     <hr>
+    <a href="{{ route('daftar') }}" class="text-decoration-none text-black">
+        Daftar
+    </a>
     <a href="{{ route('login') }}" class="text-decoration-none text-black">
         Masuk Admin
     </a>

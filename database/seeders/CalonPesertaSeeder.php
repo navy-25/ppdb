@@ -16,7 +16,7 @@ class CalonPesertaSeeder extends Seeder
     {
         CalonPeserta::create([
             'id_siswa' => 1,
-            'jalur' => 'Undangan',
+            'jalur' => 'Regular',
             'no_peserta' => 'MAN1-00001',
             'no_pendaftaran' => 'REG-00001',
             'jurusan' => 'Agama',
@@ -27,8 +27,8 @@ class CalonPesertaSeeder extends Seeder
             'jalur' => 'Regular',
             'no_peserta' => 'MAN1-00002',
             'no_pendaftaran' => 'REG-00002',
-            'jurusan' => 'MIPA',
-            'status' => 'Lolos',
+            'jurusan' => 'Agama',
+            'status' => 'Lulus',
         ]);
         CalonPeserta::create([
             'id_siswa' => 3,
@@ -36,7 +36,7 @@ class CalonPesertaSeeder extends Seeder
             'no_peserta' => 'MAN1-00003',
             'no_pendaftaran' => 'REG-00003',
             'jurusan' => 'IPS',
-            'status' => 'Calon Pendaftar',
+            'status' => 'Tidak Lulus',
         ]);
     }
 }

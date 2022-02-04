@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Peserta Lolos Seleksi
+Peserta Lulus Seleksi
 @endsection
 
 @section('peserta_lolos')
@@ -55,7 +55,7 @@ active
 @section('content')
 <div class="row mb-3">
     <div class="col-12">
-        <h6 class="card-title">Peserta Lolos Seleksi</h6>
+        <h6 class="card-title">Peserta Lulus Seleksi</h6>
     </div>
 </div>
 <div class="row">
@@ -72,7 +72,7 @@ active
                                 <th>Jalur</th>
                                 <th>Jurusan</th>
                                 <th>Status</th>
-                                <th>Tanggal Diterima</th>
+                                <th>Tanggal DiApprove</th>
                                 <th style="width: 10%">Action</th>
                             </tr>
                         </thead>

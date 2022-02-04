@@ -33,6 +33,7 @@ active
             {data: 'no_pendaftaran', name: 'no_pendaftaran'},
             {data: 'no_peserta', name: 'no_peserta'},
             {data: 'jurusan', name: 'jurusan'},
+            {data: 'asal_sekolah', name: 'asal_sekolah'},
             {data: 'date', name: 'date'},
             {data: 'action', name: 'action', orderable: true, searchable: true},
         ],
@@ -72,6 +73,7 @@ active
                                 <th>No. Pendafataran</th>
                                 <th>No. Peserta</th>
                                 <th>Jurusan</th>
+                                <th>Asal Sekolah</th>
                                 <th>Tanggal Daftar</th>
                                 <th style="width: 10%">Action</th>
                             </tr>

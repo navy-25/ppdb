@@ -1,10 +1,10 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Daftar Calon Peserta Didik Baru
+Peserta Tidak Lulus Seleksi
 @endsection
 
-@section('undangan')
+@section('peserta_reject')
 active
 @endsection
 
@@ -19,44 +19,66 @@ active
 <script src="{{ asset('../../../assets/js/data-table.js') }}"></script>
 <script>
     $('#data-table').DataTable({
-        processing:true,
-        serverSide:true,
+        processing: true,
+        serverSide: true,
         responsive: true,
 
         pageLength: 10,
         paging: true,
-        ajax: "{{ route('getDataCalonPendfatar',['jalur'=>'Undangan']) }}",
-        columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'photo', name: 'photo'},
-            {data: 'nama_lengkap', name: 'nama_lengkap'},
-            {data: 'no_pendaftaran', name: 'no_pendaftaran'},
-            {data: 'no_peserta', name: 'no_peserta'},
-            {data: 'jurusan', name: 'jurusan'},
-            {data: 'asal_sekolah', name: 'asal_sekolah'},
-            {data: 'date', name: 'date'},
-            {data: 'action', name: 'action', orderable: true, searchable: true},
-        ],
-        columnDefs: [
+        ajax: "{{ route('getDataPesertaTidakLolos') }}",
+        columns: [{
+                data: 'DT_RowIndex',
+                name: 'DT_RowIndex'
+            },
             {
-                targets: 0,
-                className: 'table-stabilo',
+                data: 'photo',
+                name: 'photo'
+            },
+            {
+                data: 'nama_lengkap',
+                name: 'nama_lengkap'
+            },
+            {
+                data: 'jalur',
+                name: 'jalur'
+            },
+            {
+                data: 'jurusan',
+                name: 'jurusan'
+            },
+            {
+                data: 'status',
+                name: 'status'
+            },
+            {
+                data: 'date',
+                name: 'date'
+            },
+            {
+                data: 'action',
+                name: 'action',
+                orderable: true,
+                searchable: true
             },
         ],
+        columnDefs: [{
+            targets: 0,
+            className: 'table-stabilo',
+        }, ],
         language: {
             paginate: {
                 previous: '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><polyline points="15 18 9 12 15 6"></polyline></svg>',
-                next:  '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><polyline points="9 18 15 12 9 6"></polyline></svg>',
+                next: '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><polyline points="9 18 15 12 9 6"></polyline></svg>',
             },
         },
     });
-    </script>
+</script>
 @endsection
 
 @section('content')
 <div class="row mb-3">
     <div class="col-12">
-        <h6 class="card-title">Calon Pendaftar Undangan</h6>
+        <h6 class="card-title">Peserta Tidak Lulus Seleksi</h6>
     </div>
 </div>
 <div class="row">
@@ -70,11 +92,10 @@ active
                                 <th style="width: 5%">No</th>
                                 <th>Foto</th>
                                 <th>Nama Lengkap</th>
-                                <th>No. Pendaftaran</th>
-                                <th>No. Peserta</th>
+                                <th>Jalur</th>
                                 <th>Jurusan</th>
-                                <th>Tanggal Daftar</th>
-                                <th>Asal Sekolah</th>
+                                <th>Status</th>
+                                <th>Tanggal Direject</th>
                                 <th style="width: 10%">Action</th>
                             </tr>
                         </thead>

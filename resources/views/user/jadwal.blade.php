@@ -22,7 +22,7 @@ Jadwal
         <div class="col-12 mb-3">
             <hr class="" style="width: 100px">
         </div>
-        <div class="col-12 col-lg-9 col-md-9">
+        <div class="col-12 col-lg-9 col-md-9 mb-3">
             <div class="col-12 mb-1">
                 <img src="{{ asset('assets/uploads/landing/'.$data->file) }}" width="100%" alt="">
             </div>

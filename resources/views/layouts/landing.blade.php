@@ -206,7 +206,7 @@
             <a href="{{ route('cek_status_pendaftaran') }}" class="text-white p-3" style="text-decoration: none;width:calc(100vw/3)">
                 <i class="text-green py-2 w-100 h-100 " width="40" height="40" data-feather="search"></i>
             </a>
-            <a href="" class="text-white p-3" style="text-decoration: none;width:calc(100vw/3)">
+            <a href="{{ route('daftar') }}" class="text-white p-3" style="text-decoration: none;width:calc(100vw/3)">
                 {{-- <p class="text-black font-weight-bold py-2 w-100 h-100">Daftar</p> --}}
                 <i class="text-green py-2 w-100 h-100 " width="40" height="40" data-feather="user-plus"></i>
             </a>

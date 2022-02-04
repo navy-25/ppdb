@@ -7,6 +7,7 @@ use App\Models\Booklet;
 use App\Models\CalonPeserta;
 use App\Models\CategoryPersyaratan;
 use App\Models\Jadwal;
+use App\Models\SoalTest;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,5 +30,6 @@ class DatabaseSeeder extends Seeder
         Jadwal::create(['file' => 'jadwal_pendaftaran.png']);
         AlurPendaftaran::create(['file' => 'alur_pendaftaran.png']);
         Booklet::create(['file' => 'booklet.pdf']);
+        SoalTest::create(['file' => 'soal_test_regular.pdf']);
     }
 }

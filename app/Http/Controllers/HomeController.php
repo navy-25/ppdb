@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CalonPeserta;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $chart['agama'] = CalonPeserta::where('jurusan', 'Agama')->count();
+        $chart['mipa'] = CalonPeserta::where('jurusan', 'MIPA')->count();
+        $chart['ips'] = CalonPeserta::where('jurusan', 'IPS')->count();
+        return view('admin.dashboard', compact('chart'));
     }
 }

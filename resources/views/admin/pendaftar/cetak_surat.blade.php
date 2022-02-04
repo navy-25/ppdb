@@ -52,7 +52,7 @@ active
 @section('content')
 <div class="row mb-3">
     <div class="col-12">
-        <h6 class="card-title">Cetak Surat Pernyataan Peserta Lolos</h6>
+        <h6 class="card-title">Cetak Surat Pernyataan Peserta Lulus</h6>
     </div>
 </div>
 <div class="row">

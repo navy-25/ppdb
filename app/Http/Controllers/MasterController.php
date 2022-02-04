@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AlurPendaftaran;
 use App\Models\Booklet;
 use App\Models\Jadwal;
+use App\Models\SoalTest;
 use Illuminate\Http\Request;
 
 class MasterController extends Controller
@@ -97,6 +98,35 @@ class MasterController extends Controller
                 return redirect()->back()->with(['error' => 'Gagal, ada yang salah dengan file yang diupload']);
             }
             return redirect()->back()->with(['success' => 'Booklet berhasil di perbarui']);
+        } catch (\Throwable $th) {
+            $message = join(" ", array_filter(explode(" ", preg_replace("/[^a-zA-Z.@]/", " ", $th->getMessage()))));
+            return redirect()->back()->with(['error' => 'Gagal menghapus, ' . $message]);
+        }
+    }
+    public function soal_test()
+    {
+        $data = SoalTest::first();
+        return view('admin.master.soal_test', compact('data'));
+    }
+    public function update_soal_test(Request $request)
+    {
+        if ($request->file == null) {
+            return redirect()->back()->with(['error' => 'Tidak ada file yang di upload']);
+        }
+        try {
+            $data = SoalTest::first();
+            try {
+                if ($request->hasFile('file')) {
+                    $file = $request->file('file');
+                    $filename = 'soal_test_regular.' . $file->getClientOriginalExtension();
+                    $request->file('file')->move('assets/uploads/landing/', $filename);
+                    $data->file = $filename;
+                    $data->save();
+                }
+            } catch (\Throwable $th) {
+                return redirect()->back()->with(['error' => 'Gagal, ada yang salah dengan file yang diupload']);
+            }
+            return redirect()->back()->with(['success' => 'Soal Test Regular berhasil di perbarui']);
         } catch (\Throwable $th) {
             $message = join(" ", array_filter(explode(" ", preg_replace("/[^a-zA-Z.@]/", " ", $th->getMessage()))));
             return redirect()->back()->with(['error' => 'Gagal menghapus, ' . $message]);

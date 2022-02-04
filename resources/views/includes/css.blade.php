@@ -2,6 +2,9 @@
     .html{
         font-family: 'Poppins' !important;
     }
+    .swal2-container{
+        z-index: 99999999999 !important;
+    }
     .br-1{border-radius: 10px !important;}
     .br-2{border-radius: 20px !important;}
     .br-3{border-radius: 30px !important;}

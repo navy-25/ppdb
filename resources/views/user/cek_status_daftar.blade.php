@@ -49,12 +49,12 @@ Cek Status Pendaftaran
             @if ($data != null)
                 <div class="row mt-5 pt-3 px-3">
                     @foreach ($data as $x)
-                        <a href="/" class="col-12 col-lg-8 col-md-8 mx-auto bg-white p-4 card-status-pendaftaran mb-3 text-black">
+                        <div class="col-12 col-lg-8 col-md-8 mx-auto bg-white p-4 card-status-pendaftaran mb-3 text-black">
                             <div class="row">
                                 <div class="col-4 col-lg-2 col-md-2">
                                     <img src="{{ asset('assets/images/placeholder.jpg') }}" width="80px" height="100px"  style="border-radius: 10px;object-fit:cover" alt="">
                                 </div>
-                                <div class="col-8 col-lg-7 col-md-7">
+                                <div class="col-8 col-lg-6 col-md-6">
                                     <div class="row">
                                         <div class="col-12 col-lg-12 col-md-12 mb-2">
                                             <h5 class="text-green">
@@ -63,30 +63,42 @@ Cek Status Pendaftaran
                                         </div>
                                         <div class="col-12 col-lg-6 col-mg-6 mb-2">
                                             <small>Status</small>
-                                            @if ($x->status == "Lolos")
+                                            @if ($x->status == "Lulus")
                                                 <h5 class="text-green">
-                                                    {{ $x->status }}
+                                                    Dinyatakan {{ $x->status }}
                                                 </h5>
                                             @elseif ($x->status == "Calon Pendaftar")
                                                 <h5 class="text-orange">
-                                                    Pengecekan
+                                                    Proses Pengecekan
                                                 </h5>
                                             @else
                                                 <h5 class="text-danger">
-                                                    Tidak Lolos
+                                                    Dinyatakan Tidak Lulus
                                                 </h5>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-lg-3 col-md-3">
-                                    <button type="button" class="btn btn-green text-white float-right btn-icon-text">
-                                        <span>Check</span>
-                                        <i class="text-white" data-feather="arrow-right" class="btn-icon-prepend ml-2"></i>
-                                    </button>
+                                <div class="col-12 col-lg-4 col-md-4">
+                                    <div class="row">
+                                        <div class="col-12 mb-2">
+                                            <button type="button" class="btn btn-green text-white float-right btn-icon-text py-1">
+                                                <i class="text-white" data-feather="printer" width="16" class="btn-icon-prepend"></i>
+                                                <span class="ml-2">Cetak Kartu</span>
+                                            </button>
+                                        </div>
+                                        <div class="col-12">
+                                            @if ($x->jalur == "Regular")
+                                                <a href="{{ asset('assets/uploads/landing/soal_test_regular.pdf') }}" target="_blank"  class="btn btn-secondary text-white float-right btn-icon-text py-1">
+                                                    <i class="text-white" data-feather="file-text" width="16" class="btn-icon-prepend"></i>
+                                                    <span class="ml-2">Download Soal Test</span>
+                                                </a>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     @endforeach
                 </div>
             @endif
