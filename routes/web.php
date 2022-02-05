@@ -38,32 +38,43 @@ Route::group(
         Route::prefix('admin')->group(
             function () {
                 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-                Route::prefix('pendaftar')->group(
+                Route::get('/pengaturan', [App\Http\Controllers\UsersController::class, 'akun_saya'])->name('akun_saya');
+                Route::post('/pengaturan/update', [App\Http\Controllers\UsersController::class, 'update_akun_saya'])->name('update_akun_saya');
+                Route::prefix('/calon-pendaftar')->group(
                     function () {
-                        Route::get('/calon/regular', [App\Http\Controllers\PendaftarController::class, 'calon_regular'])->name('calon_regular');
-                        Route::get('/calon/undangan', [App\Http\Controllers\PendaftarController::class, 'calon_undangan'])->name('calon_undangan');
-                        Route::get('/calon/{id}/delete', [App\Http\Controllers\PendaftarController::class, 'delete_calon_regular'])->name('delete_calon_regular');
-                        Route::get('/calon/{id}/view', [App\Http\Controllers\PendaftarController::class, 'view_calon'])->name('view_calon');
-                        Route::get('/calon/{id}/print', [App\Http\Controllers\PendaftarController::class, 'print_calon'])->name('print_calon');
-                        Route::get('/calon/{jalur}/getDataCalonPendfatar', [App\Http\Controllers\PendaftarController::class, 'getDataCalonPendfatar'])->name('getDataCalonPendfatar');
-
+                        Route::get('/regular', [App\Http\Controllers\PendaftarController::class, 'calon_regular'])->name('calon_regular');
+                        Route::get('/undangan', [App\Http\Controllers\PendaftarController::class, 'calon_undangan'])->name('calon_undangan');
+                        Route::get('/{id}/delete', [App\Http\Controllers\PendaftarController::class, 'delete_calon_regular'])->name('delete_calon_regular');
+                        Route::get('/{id}/view', [App\Http\Controllers\PendaftarController::class, 'view_calon'])->name('view_calon');
+                        Route::get('/{id}/perbarui-calon', [App\Http\Controllers\PendaftarController::class, 'to_update'])->name('to_update');
+                        Route::post('/{id}/perbarui-data', [App\Http\Controllers\PendaftarController::class, 'update_calon'])->name('update_calon');
+                        Route::get('/{id}/print', [App\Http\Controllers\PendaftarController::class, 'print_calon'])->name('print_calon');
+                        Route::get('/{jalur}/getDataCalonPendfatar', [App\Http\Controllers\PendaftarController::class, 'getDataCalonPendfatar'])->name('getDataCalonPendfatar');
+                    }
+                );
+                Route::prefix('/hasil-seleksi')->group(
+                    function () {
                         Route::get('/lulus', [App\Http\Controllers\PendaftarController::class, 'peserta_lolos'])->name('peserta_lolos');
                         Route::get('/lulus/getDataPesertaLolos', [App\Http\Controllers\PendaftarController::class, 'getDataPesertaLolos'])->name('getDataPesertaLolos');
-
                         Route::get('/reject', [App\Http\Controllers\PendaftarController::class, 'peserta_tidak_lolos'])->name('peserta_reject');
                         Route::get('/reject/getDataPesertaTidakLolos', [App\Http\Controllers\PendaftarController::class, 'getDataPesertaTidakLolos'])->name('getDataPesertaTidakLolos');
-
-                        Route::get('/cek-berkas-peserta-undangan', [App\Http\Controllers\PendaftarController::class, 'cek_berkas_undangan'])->name('cek_berkas_undangan');
-                        Route::get('/cek-berkas-peserta-undangan/getDataPesertaUndangan', [App\Http\Controllers\PendaftarController::class, 'getDataPesertaUndangan'])->name('getDataPesertaUndangan');
-                        Route::get('/cek-berkas-peserta-undangan/{id}/luluskan', [App\Http\Controllers\PendaftarController::class, 'luluskan_peserta_undangan'])->name('luluskan_peserta_undangan');
+                    }
+                );
+                Route::prefix('/seleksi')->group(
+                    function () {
+                        Route::get('/cek-berkas-peserta', [App\Http\Controllers\PendaftarController::class, 'cek_berkas_undangan'])->name('cek_berkas_undangan');
+                        Route::get('/cek-berkas-peserta/getDataPesertaUndangan', [App\Http\Controllers\PendaftarController::class, 'getDataPesertaUndangan'])->name('getDataPesertaUndangan');
+                        Route::get('/cek-berkas-peserta/{id}/luluskan', [App\Http\Controllers\PendaftarController::class, 'luluskan_peserta_undangan'])->name('luluskan_peserta_undangan');
                         Route::get('/cek-berkas-peserta-undangan/{id}/tolak', [App\Http\Controllers\PendaftarController::class, 'tolak_peserta_undangan'])->name('tolak_peserta_undangan');
-
-                        Route::get('/input-hasil-tes-regular', [App\Http\Controllers\PendaftarController::class, 'input_hasil_tes'])->name('input_hasil_tes');
-                        Route::get('/input-hasil-tes-regular/getDataPesertaRegular', [App\Http\Controllers\PendaftarController::class, 'getDataPesertaRegular'])->name('getDataPesertaRegular');
-                        Route::get('/input-hasil-tes-regular/{id}/luluskan', [App\Http\Controllers\PendaftarController::class, 'luluskan_peserta_regular'])->name('luluskan_peserta_regular');
-                        Route::get('/input-hasil-tes-regular/{id}/tolak', [App\Http\Controllers\PendaftarController::class, 'tolak_peserta_regular'])->name('tolak_peserta_regular');
-                        Route::post('/input-hasil-tes-regular/beri-nilai', [App\Http\Controllers\PendaftarController::class, 'save_nilai'])->name('save_nilai');
-
+                        Route::get('/hasil-tes', [App\Http\Controllers\PendaftarController::class, 'input_hasil_tes'])->name('input_hasil_tes');
+                        Route::get('/hasil-tes/getDataPesertaRegular', [App\Http\Controllers\PendaftarController::class, 'getDataPesertaRegular'])->name('getDataPesertaRegular');
+                        Route::get('/hasil-tes/{id}/luluskan', [App\Http\Controllers\PendaftarController::class, 'luluskan_peserta_regular'])->name('luluskan_peserta_regular');
+                        Route::get('/hasil-tes/{id}/tolak', [App\Http\Controllers\PendaftarController::class, 'tolak_peserta_regular'])->name('tolak_peserta_regular');
+                        Route::post('/hasil-tes/beri-nilai', [App\Http\Controllers\PendaftarController::class, 'save_nilai'])->name('save_nilai');
+                    }
+                );
+                Route::prefix('/peserta-lolos')->group(
+                    function () {
                         Route::get('/cetak-surat/', [App\Http\Controllers\PendaftarController::class, 'cetak_surat'])->name('cetak_surat');
                         Route::get('/cetak-surat/{id}/orang-tua-wali', [App\Http\Controllers\PendaftarController::class, 'print_sp_wali'])->name('print_sp_wali');
                         Route::get('/cetak-surat/{id}/calon-peserta-didik', [App\Http\Controllers\PendaftarController::class, 'print_sp_calon_peserta_didik'])->name('print_sp_calon_peserta_didik');

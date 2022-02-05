@@ -76,9 +76,9 @@ class PendaftarController extends Controller
         $tanggal_lahir = $data->tanggal_lahir;
         $birthDate = new DateTime($tanggal_lahir);
         $today = new DateTime("today");
-        if ($birthDate > $today) {
-            exit("0 tahun 0 bulan 0 hari");
-        }
+        // if ($birthDate > $today) {
+        //     exit("0 tahun 0 bulan 0 hari");
+        // }
         $count['umur'] = $today->diff($birthDate)->y;
         return view('admin.pendaftar.view_calon', compact('data', 'count'));
     }
@@ -108,6 +108,80 @@ class PendaftarController extends Controller
             ->where('d.id', $id)
             ->first();
         return view('admin.pendaftar.print_sp_calon_peserta_didik', compact('data'));
+    }
+    public function to_update($id)
+    {
+        $data = DB::table('siswas as d')
+            ->select('cp.*', 'd.*')
+            ->join('calon_pesertas as cp', 'cp.id_siswa', 'd.id')
+            ->where('d.id', $id)
+            ->first();
+        return view('admin.pendaftar.update_calon', compact('data'));
+    }
+    public function update_calon(Request $request, $id)
+    {
+        try {
+            $data = Siswa::find($id);
+            $data->update([
+                'nama_lengkap' => $request->nama_lengkap,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tanggal_lahir' =>  date('Y-m-d', strtotime($request->tanggal_lahir)),
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'nisn' => $request->nisn,
+                'nis' => $request->nis,
+                'email' => $request->email,
+                'telepon' => $request->telepon,
+                'hobi' => $request->hobi,
+                'cita_cita' => $request->cita_cita,
+                'jumlah_saudara' => $request->jumlah_saudara,
+                'anak_ke' => $request->anak_ke,
+                'asal_sekolah' => $request->asal_sekolah,
+                'npsn_asal_sekolah' => $request->npsn_asal_sekolah,
+                'jenis_sekolah' => $request->jenis_sekolah,
+                'status_sekolah' => $request->status_sekolah,
+                'mengikuti_paud' => $request->mengikuti_paud,
+                'mengikuti_tk' => $request->mengikuti_tk,
+                'alamat' => $request->alamat,
+                'desa_kelurahan' => $request->desa_kelurahan,
+                'kodepos' => $request->kodepos,
+                'kecamatan' => $request->kecamatan,
+                'kab_kota' => $request->kab_kota,
+                'provinsi' => $request->provinsi,
+                'jarak_tempat_tinggal' => $request->jarak_tempat_tinggal,
+                'transportasi' => $request->transportasi,
+                'status_penerimaan_pip_bsm' => $request->status_penerimaan_pip_bsm,
+                'alasan_menerima_pip_bsm' => $request->alasan_menerima_pip_bsm,
+                'periode_menerima_pip_bsm' => $request->periode_menerima_pip_bsm,
+                'bidang_prestasi' => $request->bidang_prestasi,
+                'tingkat_prestasi' => $request->tingkat_prestasi,
+                'peringkat' => $request->peringkat,
+                'tahun' => $request->tahun,
+                'status_beasiswa' => $request->status_beasiswa,
+                'sumber_beasiswa' => $request->sumber_beasiswa,
+                'jenis_beasiswa' => $request->jenis_beasiswa,
+                'jangka_waktu' => $request->jangka_waktu,
+                'besaran_uang' => $request->besaran_uang,
+                'no_kk' => $request->no_kk,
+                'nama_ayah' => $request->nama_ayah,
+                'nik_ayah' => $request->nik_ayah,
+                'pendidikan_terakhir_ayah' => $request->pendidikan_terakhir_ayah,
+                'telepon_ayah' => $request->telepon_ayah,
+                'pekerjaan_ayah' => $request->pekerjaan_ayah,
+                'nama_ibu' => $request->nama_ibu,
+                'nik_ibu' => $request->nik_ibu,
+                'pendidikan_terakhir_ibu' => $request->pendidikan_terakhir_ibu,
+                'telepon_ibu' => $request->telepon_ibu,
+                'pekerjaan_ibu' => $request->pekerjaan_ibu,
+                'penghasilan_perbulan' => $request->penghasilan_perbulan,
+                'nomor_kss_kps' => $request->nomor_kss_kps,
+                'nomor_pkh' => $request->nomor_pkh,
+                'nomor_kip' => $request->nomor_kip,
+            ]);
+            return redirect()->back()->with(['success' => $data->name . ' berhasil di perbarui']);
+        } catch (\Throwable $th) {
+            $message = join(" ", array_filter(explode(" ", preg_replace("/[^a-zA-Z.@]/", " ", $th->getMessage()))));
+            return redirect()->back()->with(['error' => 'Gagal memperbarui, ' . $message]);
+        }
     }
     public function getDataPesertaUndangan(Request $request)
     {

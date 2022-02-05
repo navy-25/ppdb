@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\DataTables;
@@ -13,6 +14,36 @@ class UsersController extends Controller
     public function index()
     {
         return view('admin.akun_pegawai.index');
+    }
+    public function akun_saya()
+    {
+        $data = User::find(Auth::user()->id);
+        return view('admin.account.index', compact('data'));
+    }
+    public function update_akun_saya(Request $request)
+    {
+        try {
+            $data = User::find(Auth::user()->id);
+            if ($request->password == null) {
+                $data->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                ]);
+            } else {
+                if (strlen($request->password) < 8) {
+                    return redirect()->back()->with(['error' => 'Gagal memperbarui, password harus minimal berisi 8 huruf']);
+                }
+                $data->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                ]);
+            }
+            return redirect()->back()->with(['success' => $data->name . ' berhasil di perbarui']);
+        } catch (\Throwable $th) {
+            $message = join(" ", array_filter(explode(" ", preg_replace("/[^a-zA-Z.@]/", " ", $th->getMessage()))));
+            return redirect()->back()->with(['error' => 'Gagal memperbarui, ' . $message]);
+        }
     }
     public function getDataAkunPegwai(Request $request)
     {

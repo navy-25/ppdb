@@ -56,7 +56,7 @@ class Siswa extends Model
         'nik_ayah',
         'pendidikan_terakhir_ayah',
         'telepon_ayah',
-        'pekerjaan_ibu',
+        'pekerjaan_ayah',
         'nama_ibu',
         'nik_ibu',
         'pendidikan_terakhir_ibu',

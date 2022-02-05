@@ -84,7 +84,7 @@
                             <td>(10 digit)</td>
                         </tr>
                         <tr>
-                            <td>NIS (Nomor Induk Kependudukan)</td>
+                            <td>NIK (Nomor Induk Kependudukan)</td>
                             <td style="width: 5px">:</td>
                             <td>{{ $data->nis}}</td>
                             <td>(16 digit)</td>
@@ -193,7 +193,7 @@
                         <tr>
                             <td>Alasan Menerima PIP/BSM</td>
                             <td style="width: 5px">:</td>
-                            <td colspan="2">{{ $data->status_penerimaan_pip_bsm}}</td>
+                            <td colspan="2">{{ $data->alasan_menerima_pip_bsm}}</td>
                         </tr>
                         <tr>
                             <td>Periode Menerima PIP/BSM</td>
@@ -255,7 +255,7 @@
                         <tr>
                             <td>Jangka Waktu (Bulan)</td>
                             <td style="width: 5px">:</td>
-                            <td colspan="2">{{ $data->jenis_beasiswa}}</td>
+                            <td colspan="2">{{ $data->jangka_waktu}}</td>
                         </tr>
                         <tr>
                             <td>Besar Uang diterima (Rp)</td>
@@ -345,7 +345,7 @@
                         <tr>
                             <td>Nomor KSS/KPS</td>
                             <td style="width: 5px">:</td>
-                            <td colspan="2">{{ $data->penghasilan_perbulan}}</td>
+                            <td colspan="2">{{ $data->nomor_kss_kps}}</td>
                         </tr>
                         <tr>
                             <td>Nomor Kartu PKH (Penerima Kartu Harapan)</td>

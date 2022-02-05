@@ -44,13 +44,13 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item @yield('peserta_tes')">
+            <li class="nav-item @yield('tes')">
                 <a href="{{ route('input_hasil_tes') }}" class="nav-link">
                     <i class="link-icon" data-feather="database"></i>
                     <span class="link-title">Input Hasil Tes</span>
                 </a>
             </li>
-            <li class="nav-item @yield('peserta_tes')">
+            <li class="nav-item @yield('berkas')">
                 <a href="{{ route('cek_berkas_undangan') }}" class="nav-link">
                     <i class="link-icon" data-feather="file-text"></i>
                     <span class="link-title">Cek Berkas Undangan</span>
@@ -63,16 +63,16 @@
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
                 @php
-                    $total['lulus_regular'] = \App\Models\CalonPeserta::where('jalur', 'Regular')->where('status','Lulus')->count();
-                    $total['lulus_undangan'] = \App\Models\CalonPeserta::where('jalur', 'Undangan')->where('status','Lulus')->count();
+                    $total['lulus'] = \App\Models\CalonPeserta::where('status','Lulus')->count();
+                    $total['tidak_lulus'] = \App\Models\CalonPeserta::where('status','Tidak Lulus')->count();
                 @endphp
                 <div class="collapse" id="seleksi">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('peserta_lolos') }}" class="nav-link @yield('peserta_lolos')">Lulus ({{ $total['lulus_regular'] }})</a>
+                            <a href="{{ route('peserta_lolos') }}" class="nav-link @yield('peserta_lolos')">Lulus ({{ $total['lulus'] }})</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('peserta_reject') }}" class="nav-link @yield('peserta_reject')">Tidak Lulus ({{ $total['lulus_undangan'] }})</a>
+                            <a href="{{ route('peserta_reject') }}" class="nav-link @yield('peserta_reject')">Tidak Lulus ({{ $total['tidak_lulus'] }})</a>
                         </li>
                     </ul>
                 </div>
@@ -88,9 +88,9 @@
                         <li class="nav-item">
                             <a href="{{ route('cetak_surat') }}" class="nav-link @yield('cetak_surat')">Cetak Surat Pernyataan</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="" class="nav-link @yield('')">Cetak Data Peserta</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </li>
@@ -126,12 +126,12 @@
                     <span class="link-title">Akun pegawai</span>
                 </a>
             </li>
-            {{-- <li class="nav-item">
-                <a href="" class="nav-link">
-                    <i class="link-icon" data-feather="user"></i>
-                    <span class="link-title">My Account</span>
+            <li class="nav-item">
+                <a href="{{ route('akun_saya') }}" class="nav-link @yield('akun_saya')">
+                    <i class="link-icon" data-feather="settings"></i>
+                    <span class="link-title">Pengaturan</span>
                 </a>
-            </li> --}}
+            </li>
         </ul>
     </div>
 </nav>

@@ -71,7 +71,7 @@ Biodata Peserta
                         <small>{{ $data->jenis_kelamin == 'L' ? 'Laki-Laki' : 'Perempuan'}} / {{ $count['umur'] }} Tahun</small>
                     </div>
                     <div class="col-5 col-md-12 col-lg-12 text-desc">
-                        <a href="{{ route('print_calon',['id'=>$data->id]) }}" target="_blank" class="btn btn-inverse-warning btn-print">
+                        <a href="{{ route('print_calon',['id'=>$data->id]) }}"  class="btn btn-inverse-warning btn-print">
                             Cetak
                         </a>
                     </div>
@@ -82,7 +82,16 @@ Biodata Peserta
     <div class="col-md-9 col-lg-9 col-12 order-md-1 order-lg-1 order-2">
         <div class="card">
             <div class="card-header">
-                <h5 class="font-wight-bold">Biodata Peserta</h5>
+                <div class="row">
+                    <div class="col-6">
+                        <h5 class="font-wight-bold">Biodata Peserta</h5>
+                    </div>
+                    <div class="col-6">
+                        <a href="{{ route('to_update',['id'=>$data->id]) }}" class="float-right btn btn-inverse-warning btn-print">
+                            Perbarui Data
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <ul class="nav nav-pills" id="myTab">
@@ -117,7 +126,11 @@ Biodata Peserta
                                 <tr>
                                     <th class="t-left">Tempat, Tanggal Lahir</th>
                                     <th class="" style="width: 5px">:</th>
-                                    <th class="t-right">{{ $data->tempat_lahir }}, {{ $date = date('d M Y', strtotime($data->tanggal_lahir)); }}</th>
+                                    <th class="t-right">{{ $data->tempat_lahir }},
+                                        @if ($data->tanggal_lahir != null)
+                                            {{ $date = date('d M Y', strtotime($data->tanggal_lahir)); }}
+                                        @endif
+                                    </th>
                                 </tr>
                                 <tr>
                                     <th class="t-left">Jenis Kelamin</th>
@@ -130,7 +143,7 @@ Biodata Peserta
                                     <th class="t-right">{{ $data->nisn}}</th>
                                 </tr>
                                 <tr>
-                                    <th class="t-left">NIS (Nomor Induk Kependudukan)</th>
+                                    <th class="t-left">NIK (Nomor Induk Kependudukan)</th>
                                     <th class="" style="width: 5px">:</th>
                                     <th class="t-right">{{ $data->nis}}</th>
                                 </tr>
@@ -239,17 +252,12 @@ Biodata Peserta
                                 <tr>
                                     <th class="t-left">Alasan Menerima PIP/BSM</th>
                                     <th class="" style="width: 5px">:</th>
-                                    <th class="t-right">{{ $data->status_penerimaan_pip_bsm}}</th>
+                                    <th class="t-right">{{ $data->alasan_menerima_pip_bsm}}</th>
                                 </tr>
                                 <tr>
                                     <th class="t-left">Periode Menerima PIP/BSM</th>
                                     <th class="" style="width: 5px">:</th>
                                     <th class="t-right">{{ $data->periode_menerima_pip_bsm}}</th>
-                                </tr>
-                                <tr>
-                                    <th class="t-left t-bottom">Transportasi ke Madrasah</th>
-                                    <th class="t-bottom" style="width: 5px">:</th>
-                                    <th class="t-right t-bottom">{{ $data->transportasi}}</th>
                                 </tr>
                             </tbody>
                         </table>
@@ -301,7 +309,7 @@ Biodata Peserta
                                 <tr>
                                     <th class="t-left">Jangka Waktu (Bulan)</th>
                                     <th class="" style="width: 5px">:</th>
-                                    <th class="t-right">{{ $data->jenis_beasiswa}}</th>
+                                    <th class="t-right">{{ $data->jangka_waktu}}</th>
                                 </tr>
                                 <tr>
                                     <th class="t-left t-bottom">Besar Uang diterima (Rp)</th>
@@ -395,7 +403,7 @@ Biodata Peserta
                                 <tr>
                                     <th class="t-left">Nomor KSS/KPS</th>
                                     <th class="" style="width: 5px">:</th>
-                                    <th class="t-right">{{ $data->penghasilan_perbulan}}</th>
+                                    <th class="t-right">{{ $data->nomor_kss_kps}}</th>
                                 </tr>
                                 <tr>
                                     <th class="t-left">Nomor Kartu PKH (Penerima Kartu Harapan)</th>

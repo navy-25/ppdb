@@ -28,10 +28,10 @@ class CreateSiswasTable extends Migration
             $table->string('telepon')->nullable();
             $table->string('hobi')->nullable();
             $table->string('cita_cita')->nullable();
-            $table->integer('jumlah_saudara')->nullable();
-            $table->integer('anak_ke')->nullable();
+            $table->string('jumlah_saudara')->nullable();
+            $table->string('anak_ke')->nullable();
             $table->string('asal_sekolah')->nullable();
-            $table->integer('npsn_asal_sekolah')->nullable();
+            $table->string('npsn_asal_sekolah')->nullable();
             $table->string('jenis_sekolah')->nullable();
             $table->string('status_sekolah')->nullable();
             $table->string('mengikuti_paud')->nullable();
@@ -40,7 +40,7 @@ class CreateSiswasTable extends Migration
             //Informasi tempat tinggal
             $table->text('alamat')->nullable();
             $table->string('desa_kelurahan')->nullable();
-            $table->integer('kodepos')->nullable();
+            $table->string('kodepos')->nullable();
             $table->string('kecamatan')->nullable();
             $table->string('kab_kota')->nullable();
             $table->string('provinsi')->nullable();
@@ -56,13 +56,13 @@ class CreateSiswasTable extends Migration
             $table->string('bidang_prestasi')->nullable();
             $table->string('tingkat_prestasi')->nullable();
             $table->string('peringkat')->nullable();
-            $table->integer('tahun')->nullable();
+            $table->string('tahun')->nullable();
 
             //beasiswa
             $table->string('status_beasiswa')->nullable();
             $table->string('sumber_beasiswa')->nullable();
             $table->string('jenis_beasiswa')->nullable();
-            $table->integer('jangka_waktu')->nullable();
+            $table->string('jangka_waktu')->nullable();
             $table->bigInteger('besaran_uang')->nullable();
 
             //orang tua

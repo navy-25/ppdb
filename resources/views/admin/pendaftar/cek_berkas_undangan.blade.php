@@ -4,7 +4,7 @@
 Cek Berkas Peserta Undangan
 @endsection
 
-@section('peserta_lolos')
+@section('berkas')
 active
 @endsection
 

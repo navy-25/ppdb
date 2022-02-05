@@ -4,7 +4,7 @@
 Input Hasil Tes Peserta Regular
 @endsection
 
-@section('peserta_lolos')
+@section('tes')
 active
 @endsection
 

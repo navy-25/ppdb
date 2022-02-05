@@ -171,18 +171,18 @@ Form Pendaftaran
                             <input type="text" class="form-control" id="asal_sekolah" name="asal_sekolah" placeholder="nama sekolah" required>
                         </div>
                         <div class="row">
-                            <div class="col-12 col-lg-6 col-md-6">
+                            <div class="col-12 col-lg-12 col-md-12">
                                 <div class="form-group">
                                     <label for="nisn">NISN*</label>
                                     <input type="number" class="form-control" id="nisn" name="nisn" placeholder="Nomor Induk Siswa Nasional" required>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-6 col-md-6">
+                            {{-- <div class="col-12 col-lg-6 col-md-6">
                                 <div class="form-group">
                                     <label for="no_un">No. Peserta UN*</label>
                                     <input type="text" class="form-control" id="no_un" name="no_un" placeholder="Nomor ujian nasioanl di SMP/Mts" required>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -194,7 +194,6 @@ Form Pendaftaran
                             <div class="col-12 col-lg-6 col-md-6">
                                 <div class="form-group">
                                     <label for="jurusan">Peminatan/Jurusan*</label>
-                                    {{-- <select class="select2-single form-control" name="jurusan" data-width="100%"> --}}
                                     <select class="form-control" name="jurusan" style="border-radius: 10px" data-width="100%">
                                         <option value="Agama">Agama</option>
                                         <option value="IPS">IPS</option>
@@ -205,7 +204,6 @@ Form Pendaftaran
                             <div class="col-12 col-lg-6 col-md-6">
                                 <div class="form-group">
                                     <label for="jalur">Jalur pendaftaran*</label>
-                                    {{-- <select class="select2-single form-control" name="jalur" data-width="100%"> --}}
                                     <select class="form-control" name="jalur" style="border-radius: 10px" data-width="100%">
                                         <option value="Undangan">Undangan</option>
                                         <option value="Regular">Regular</option>
