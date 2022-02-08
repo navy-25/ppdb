@@ -45,18 +45,22 @@ class LandingController extends Controller
     public function cek_status_pendaftaran()
     {
         if (isset($_GET['pencarian'])) {
-            $data = DB::table('calon_pesertas as cp')
-                ->select(
-                    'cp.*',
-                    's.*',
-                )
-                ->join('siswas as s', 's.id', 'cp.id_siswa')
-                ->orWhere('s.nama_lengkap', 'like', '%' .  $_GET['pencarian'] . '%')
-                ->orWhere('s.nisn', 'like', '%' .  $_GET['pencarian'] . '%')
-                ->orWhere('s.nis', 'like', '%' .  $_GET['pencarian'] . '%')
-                ->orWhere('cp.no_pendaftaran', 'like', '%' .  $_GET['pencarian'] . '%')
-                ->orWhere('cp.no_peserta', 'like', '%' .  $_GET['pencarian'] . '%')
-                ->get();
+            if($_GET['pencarian'] == ''){
+                $data = null;
+            }else{
+                $data = DB::table('calon_pesertas as cp')
+                    ->select(
+                        'cp.*',
+                        's.*'
+                    )
+                    ->join('siswas as s', 's.id', 'cp.id_siswa')
+                    ->orWhere('s.nama_lengkap', 'like', '%' .  $_GET['pencarian'] . '%')
+                    ->orWhere('s.nisn', 'like', '%' .  $_GET['pencarian'] . '%')
+                    ->orWhere('s.no_kk', 'like', '%' .  $_GET['pencarian'] . '%')
+                    ->orWhere('cp.no_pendaftaran', 'like', '%' .  $_GET['pencarian'] . '%')
+                    ->orWhere('cp.no_peserta', 'like', '%' .  $_GET['pencarian'] . '%')
+                    ->get();
+            }
         } else {
             $data = null;
         }
@@ -66,10 +70,10 @@ class LandingController extends Controller
     {
         try {
             $Siswa = Siswa::create([
-                'ijazah' => $request->file_raport,
+                'ijazah' => $request->ijazah,
                 'photo' => $request->file_foto,
                 'nama_lengkap' => $request->name,
-                'tempat_lahir' => $request->tanggal_lahir,
+                'tempat_lahir' => $request->tempat_lahir,
                 'tanggal_lahir' => date('Y-m-d', strtotime($request->tempat_lahir)),
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'nisn' => $request->nisn,
@@ -108,30 +112,27 @@ class LandingController extends Controller
             if ($request->photo != null) {
                 if ($request->hasFile('photo')) {
                     $file = $request->file('photo');
-                    $request->validate([
-                        'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-                    ]);
                     $filename = $Siswa->id . '_' . $Siswa->nama_lengkap . '.' . $file->getClientOriginalExtension();
                     $request->file('photo')->move('assets/uploads/calon siswa/', $filename);
                     $Siswa->photo = $filename;
                     $Siswa->save();
                 }
-                if ($request->hasFile('file_raport')) {
-                    $file = $request->file('file_raport');
+            }
+            if ($request->ijazah != null) {
+                if ($request->hasFile('ijazah')) {
+                    $file = $request->file('ijazah');
                     $filename = $Siswa->id . '_' . $Siswa->nama_lengkap . '.' . $file->getClientOriginalExtension();
-                    $request->file('v')->move('assets/uploads/ijazah/', $filename);
+                    $request->file('ijazah')->move('assets/uploads/calon siswa/', $filename);
                     $Siswa->ijazah = $filename;
                     $Siswa->save();
                 }
             }
             return redirect()->route('cek_status_pendaftaran')->with(['success' => 'Berhasil mengirim data']);
         } catch (\Throwable $th) {
-            $message = join(" ", array_filter(explode(" ", preg_replace("/[^a-zA-Z.@]/", " ", $th->getMessage()))));
-            return redirect()->route('daftar')->with(['error' => 'Gagal mengirim data, ' . $message]);
+            // $message = join(" ", array_filter(explode(" ", preg_replace("/[^a-zA-Z.@]/", " ", $th->getMessage()))));
+            return redirect()->route('daftar')->with(['error' => 'Gagal, Periksa kembali data yang anda kirim']);
         }
     }
-
-    //new
     public function print_kartu_peserta($nama_lengkap, $id)
     {
         $data = DB::table('siswas as cp')

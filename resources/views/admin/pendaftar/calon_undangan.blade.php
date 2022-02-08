@@ -73,8 +73,8 @@ active
                                 <th>No. Pendaftaran</th>
                                 <th>No. Peserta</th>
                                 <th>Jurusan</th>
-                                <th>Tanggal Daftar</th>
                                 <th>Asal Sekolah</th>
+                                <th>Tanggal Daftar</th>
                                 <th style="width: 10%">Action</th>
                             </tr>
                         </thead>

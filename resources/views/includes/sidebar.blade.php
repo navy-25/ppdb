@@ -88,6 +88,9 @@
                         <li class="nav-item">
                             <a href="{{ route('cetak_surat') }}" class="nav-link @yield('cetak_surat')">Cetak Surat Pernyataan</a>
                         </li>
+                        {{-- <li class="nav-item">
+                            <a href="" class="nav-link @yield('')">Cetak Data Peserta</a>
+                        </li> --}}
                     </ul>
                 </div>
             </li>
@@ -163,7 +166,7 @@
                 </a>
             </li>
             <li class="nav-item nav-category">Account</li>
-            @if (Auth::user()->role == "Root")
+            @if(Auth::user()->role == 'Root')
                 <li class="nav-item @yield('akun_pegawai')">
                     <a href="{{ route('akun_pegawai') }}" class="nav-link">
                         <i class="link-icon" data-feather="user"></i>

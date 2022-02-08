@@ -38,7 +38,7 @@ Cek Status Pendaftaran
             <div class="row mb-4">
                 <form action="" class="col-12 col-lg-8 col-md-8 mx-auto d-flex">
                     @csrf
-                    <input type="text" class="w-100 search-status mr-4" name="pencarian" placeholder="Cari berdasarkan nama, nomor pendaftaran, NIS, NISN ...">
+                    <input type="text" class="w-100 search-status mr-4" name="pencarian" placeholder="Cari berdasarkan nama, nomor pendaftaran, No. KK, atau NISN">
                     <span>
                         <button type="submit" class="btn btn-green" style="width: 100%; height: 100%;border-radius:100%">
                             <i class="text-white" data-feather="search"></i>
@@ -46,75 +46,100 @@ Cek Status Pendaftaran
                     </span>
                 </form>
             </div>
-            @if ($data != null)
-                <div class="row mt-5 pt-3 px-3">
-                    @foreach ($data as $x)
-                        <div class="col-12 col-lg-8 col-md-8 mx-auto bg-white p-4 card-status-pendaftaran mb-3 text-black">
-                            <div class="row">
-                                <div class="col-4 col-lg-2 col-md-2">
-                                    <img src="{{ asset('assets/images/placeholder.jpg') }}" width="80px" height="100px"  style="border-radius: 10px;object-fit:cover" alt="">
-                                </div>
-                                <div class="col-8 col-lg-6 col-md-6">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-12 col-md-12 mb-2">
-                                            <h5 class="text-green">
-                                                {{ $x->nama_lengkap }}
-                                            </h5>
-                                        </div>
-                                        <div class="col-12 col-lg-6 col-mg-6 mb-2">
-                                            <small>Status</small>
-                                            @if ($x->status == "Lulus")
+            @if ($data != null && isset($_GET['pencarian']) == true)
+                @if(strlen($_GET['pencarian']) < 4);
+                    <div class="col-12 col-lg-8 col-md-8 d-flex mx-auto">
+                        <div class="alert alert-info w-100" role="alert">
+                        	<h4 class="alert-heading mb-2">Opps, Sory data kamu tidak ditemukan</h4>
+                        	<p>Masukkan setidaknya minimal 4 huruf.</p>
+                        </div>
+                    </div>
+                @else
+                    <div class="row mt-5 pt-3 px-3">
+                        @foreach ($data as $x)
+                            <div class="col-12 col-lg-8 col-md-8 mx-auto bg-white p-4 card-status-pendaftaran mb-3 text-black">
+                                <div class="row">
+                                    <div class="col-4 col-lg-2 col-md-2">
+                                        @if($x->photo == null)
+                                            <img src="{{ asset('assets/images/placeholder.jpg') }}" width="80px" height="100px"  style="border-radius: 10px;object-fit:cover" alt="">
+                                        @else
+                                            <img src="{{ asset('assets/uploads/calon siswa/'.$x->photo) }}" width="80px" height="100px"  style="border-radius: 10px;object-fit:cover" alt="">
+                                        @endif
+                                    </div>
+                                    <div class="col-8 col-lg-6 col-md-6">
+                                        <div class="row">
+                                            <div class="col-12 col-lg-12 col-md-12 mb-2">
                                                 <h5 class="text-green">
-                                                    Dinyatakan {{ $x->status }}
+                                                    {{ $x->nama_lengkap }}
                                                 </h5>
-                                            @elseif ($x->status == "Calon Pendaftar")
-                                                <h5 class="text-orange">
-                                                    Proses Pengecekan
-                                                </h5>
-                                            @else
-                                                <h5 class="text-danger">
-                                                    Dinyatakan Tidak Lulus
-                                                </h5>
-                                            @endif
+                                            </div>
+                                            <div class="col-12 col-lg-6 col-mg-6 mb-2">
+                                                <small>Status</small>
+                                                @if ($x->status == "Lulus")
+                                                    <h5 class="text-green">
+                                                        Dinyatakan {{ $x->status }}
+                                                    </h5>
+                                                @elseif ($x->status == "Calon Pendaftar")
+                                                    <h5 class="text-orange">
+                                                        Proses Pengecekan
+                                                    </h5>
+                                                @else
+                                                    <h5 class="text-danger">
+                                                        Dinyatakan Tidak Lulus
+                                                    </h5>
+                                                @endif
+                                            </div>
+                                            <div class="col-12 col-lg-6 col-mg-6 mb-2">
+                                                <small>Jurusan</small>
+                                                <br>
+                                               <b>{{$x->jurusan}} ({{$x->jalur}})</b>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-lg-4 col-md-4">
-                                    <div class="row">
-                                        <div class="col-12 mb-2">
-                                            @if ($x->status == "Tidak Lulus")
-                                                <button disabled
-                                                    class="btn btn-green text-white float-right btn-icon-text py-1">
-                                                    <i class="text-white" data-feather="printer" width="16" class="btn-icon-prepend"></i>
-                                                    <span class="ml-2">Cetak Kartu</span>
-                                                </button>
-                                            @else
-                                                <a href="{{ route('print_kartu_peserta',['nama_lengkap'=>$x->nama_lengkap,'id'=>$x->id_siswa]) }}" class="btn btn-green text-white float-right btn-icon-text py-1">
-                                                    <i class="text-white" data-feather="printer" width="16" class="btn-icon-prepend"></i>
-                                                    <span class="ml-2">Cetak Kartu</span>
-                                                </a>
-                                            @endif
-                                        </div>
-                                        <div class="col-12">
-                                            @if ($x->jalur == "Regular")
-                                                @if ($x->status == "Tidak Lulus" || $x->status == "Lulus")
-                                                    <button disabled class="btn btn-secondary text-white float-right btn-icon-text py-1">
-                                                        <i class="text-white" data-feather="file-text" width="16" class="btn-icon-prepend"></i>
-                                                        <span class="ml-2">Download Soal Test</span>
+                                    <div class="col-12 col-lg-4 col-md-4">
+                                        <div class="row">
+                                            <div class="col-12 mb-2">
+                                                @if ($x->status == "Tidak Lulus")
+                                                    <button disabled
+                                                        class="btn btn-green text-white float-right btn-icon-text py-1">
+                                                        <i class="text-white" data-feather="printer" width="16" class="btn-icon-prepend"></i>
+                                                        <span class="ml-2">Cetak Kartu</span>
                                                     </button>
                                                 @else
-                                                    <a href="{{ asset('assets/uploads/landing/soal_test_regular.pdf') }}" target="_blank"  class="btn btn-secondary text-white float-right btn-icon-text py-1">
-                                                        <i class="text-white" data-feather="file-text" width="16" class="btn-icon-prepend"></i>
-                                                        <span class="ml-2">Download Soal Test</span>
+                                                    <a href="{{ route('print_kartu_peserta',['nama_lengkap'=>$x->nama_lengkap,'id'=>$x->id_siswa]) }}" class="btn btn-green text-white float-right btn-icon-text py-1">
+                                                        <i class="text-white" data-feather="printer" width="16" class="btn-icon-prepend"></i>
+                                                        <span class="ml-2">Cetak Kartu</span>
                                                     </a>
                                                 @endif
-                                            @endif
+                                            </div>
+                                            <div class="col-12">
+                                                @if ($x->jalur == "Regular")
+                                                    @if ($x->status == "Tidak Lulus" || $x->status == "Lulus")
+                                                        <button disabled class="btn btn-secondary text-white float-right btn-icon-text py-1">
+                                                            <i class="text-white" data-feather="file-text" width="16" class="btn-icon-prepend"></i>
+                                                            <span class="ml-2">Download Soal Test</span>
+                                                        </button>
+                                                    @else
+                                                        <a href="{{ asset('assets/uploads/landing/soal_test_regular.pdf') }}" target="_blank"  class="btn btn-secondary text-white float-right btn-icon-text py-1">
+                                                            <i class="text-white" data-feather="file-text" width="16" class="btn-icon-prepend"></i>
+                                                            <span class="ml-2">Download Soal Test</span>
+                                                        </a>
+                                                    @endif
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
+                @endif
+            @elseif ($data == null && isset($_GET['pencarian']) == true)
+                <div class="col-12 col-lg-8 col-md-8 d-flex mx-auto">
+                    <div class="alert alert-info w-100" role="alert">
+                    	<h4 class="alert-heading mb-2">Opps, Sory data kamu tidak ditemukan</h4>
+                    	<p>Kamu bisa cari data kamu, berdasarkan nama lengkap, nomor pendaftaran, nomor peserta, nisn, atau no kartu keluarga (KK). Silahkan coba lagi !.</p>
+                    </div>
                 </div>
             @endif
         </div>

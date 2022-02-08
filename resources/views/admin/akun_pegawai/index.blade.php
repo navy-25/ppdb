@@ -69,7 +69,7 @@ active
 @endsection
 
 @section('content')
-@if (Auth::user()->role == 'Root')
+@if(Auth::user()->role == 'Root')
     <div class="row mb-3">
         <div class="col-6">
             <h6 class="card-title">Kelola Akun Pegawai</h6>
@@ -111,7 +111,7 @@ active
                 <form class="modal-update" method="POST" action="">
                     @csrf
                     <div class="modal-header">
-                        <h5 class="modal-title">Perbarui akun pegawai</h5>
+                        <h5 class="modal-title"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" > <span aria-hidden="true">&times;</span> </button>
                     </div>
                     <div class="modal-body">
@@ -183,9 +183,9 @@ active
         </div>
     </div>
 @else
-    <div class="alert alert-info w-100" role="alert">
-        <h4 class="alert-heading mb-2">Opps, Kamu bukan admin</h4>
-        <p>Akses kamu dibatasi karena kamu bukan admin teritinggi.</p>
-    </div>
+<div class="alert alert-info w-100" role="alert">
+	<h4 class="alert-heading mb-2">Opps, Kamu bukan admin</h4>
+	<p>Akses kamu dibatasi karena kamu bukan admin teritinggi.</p>
+</div>
 @endif
 @endsection

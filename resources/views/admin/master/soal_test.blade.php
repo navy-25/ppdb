@@ -39,8 +39,8 @@ active
                 <form class="forms-sample" method="POST" action="{{ route('update_soal_test') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="file">Upload file (PDF | max. 2 mb)</label>
-                        <input type="file" name="file" class="dropify" data-max-file-size="2M" data-allowed-file-extensions="pdf" data-default-file="PDF"  data-height="140" />
+                        <label for="file">Upload file (PDF | max. 10 mb)</label>
+                        <input type="file" name="file" class="dropify" data-max-file-size="10M" data-allowed-file-extensions="pdf" data-default-file="PDF"  data-height="140" />
                     </div>
                     <div class="mt-4 d-flex">
                         <button type="submit" id="submit_button"  class="btn btn-warning mr-2 mb-2 mb-md-0 text-white">

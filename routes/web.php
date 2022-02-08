@@ -19,12 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('/getPersyaratanAll', [App\Http\Controllers\HomeController::class, 'getPersyaratanAll'])->name('getPersyaratanAll');
-
+Route::get('/', [App\Http\Controllers\LandingController::class, 'index'])->name('web_ppdb');
 // Auth::routes();
 Auth::routes(['register' => false]);
 Route::prefix('ppdb')->group(
     function () {
-        Route::get('/', [App\Http\Controllers\LandingController::class, 'index'])->name('web_ppdb');
         Route::get('/syarat-pendaftaran', [App\Http\Controllers\LandingController::class, 'syarat_pendaftaran'])->name('syarat_pendaftaran');
         Route::get('/jadwal', [App\Http\Controllers\LandingController::class, 'jadwal'])->name('jadwal');
         Route::get('/biaya', [App\Http\Controllers\LandingController::class, 'biaya'])->name('biaya');
@@ -32,8 +31,6 @@ Route::prefix('ppdb')->group(
         Route::post('/daftar/store', [App\Http\Controllers\LandingController::class, 'form_pendaftaran_siswa'])->name('form_pendaftaran_siswa');
         Route::get('/alur-pendaftaran', [App\Http\Controllers\LandingController::class, 'alur_pendaftaran'])->name('alur_pendaftaran');
         Route::get('/cek-status-pendaftaran', [App\Http\Controllers\LandingController::class, 'cek_status_pendaftaran'])->name('cek_status_pendaftaran');
-
-        //new
         Route::get('/print-kartu-peserta/{nama_lengkap}/{id}', [App\Http\Controllers\LandingController::class, 'print_kartu_peserta'])->name('print_kartu_peserta');
     }
 );
@@ -45,7 +42,7 @@ Route::group(
                 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
                 Route::get('/pengaturan', [App\Http\Controllers\UsersController::class, 'akun_saya'])->name('akun_saya');
                 Route::post('/pengaturan/update', [App\Http\Controllers\UsersController::class, 'update_akun_saya'])->name('update_akun_saya');
-                Route::prefix('/calon-pendaftar')->group(
+                Route::prefix('calon-pendaftar')->group(
                     function () {
                         Route::get('/regular', [App\Http\Controllers\PendaftarController::class, 'calon_regular'])->name('calon_regular');
                         Route::get('/undangan', [App\Http\Controllers\PendaftarController::class, 'calon_undangan'])->name('calon_undangan');
@@ -57,7 +54,7 @@ Route::group(
                         Route::get('/{jalur}/getDataCalonPendfatar', [App\Http\Controllers\PendaftarController::class, 'getDataCalonPendfatar'])->name('getDataCalonPendfatar');
                     }
                 );
-                Route::prefix('/hasil-seleksi')->group(
+                Route::prefix('hasil-seleksi')->group(
                     function () {
                         Route::get('/lulus', [App\Http\Controllers\PendaftarController::class, 'peserta_lolos'])->name('peserta_lolos');
                         Route::get('/lulus/getDataPesertaLolos', [App\Http\Controllers\PendaftarController::class, 'getDataPesertaLolos'])->name('getDataPesertaLolos');
@@ -65,7 +62,7 @@ Route::group(
                         Route::get('/reject/getDataPesertaTidakLolos', [App\Http\Controllers\PendaftarController::class, 'getDataPesertaTidakLolos'])->name('getDataPesertaTidakLolos');
                     }
                 );
-                Route::prefix('/seleksi')->group(
+                Route::prefix('seleksi')->group(
                     function () {
                         Route::get('/cek-berkas-peserta', [App\Http\Controllers\PendaftarController::class, 'cek_berkas_undangan'])->name('cek_berkas_undangan');
                         Route::get('/cek-berkas-peserta/getDataPesertaUndangan', [App\Http\Controllers\PendaftarController::class, 'getDataPesertaUndangan'])->name('getDataPesertaUndangan');
@@ -78,7 +75,7 @@ Route::group(
                         Route::post('/hasil-tes/beri-nilai', [App\Http\Controllers\PendaftarController::class, 'save_nilai'])->name('save_nilai');
                     }
                 );
-                Route::prefix('/peserta-lolos')->group(
+                Route::prefix('peserta-lolos')->group(
                     function () {
                         Route::get('/cetak-surat/', [App\Http\Controllers\PendaftarController::class, 'cetak_surat'])->name('cetak_surat');
                         Route::get('/cetak-surat/{id}/orang-tua-wali', [App\Http\Controllers\PendaftarController::class, 'print_sp_wali'])->name('print_sp_wali');
@@ -89,13 +86,11 @@ Route::group(
                 Route::prefix('akun')->group(
                     function () {
                         Route::get('/pegawai', [App\Http\Controllers\UsersController::class, 'index'])->name('akun_pegawai');
+                        Route::post('/pegawai/store', [App\Http\Controllers\UsersController::class, 'store'])->name('store_akun_pegawai');
                         Route::get('/pegawai/{id}/delete', [App\Http\Controllers\UsersController::class, 'delete'])->name('delete_pegawai');
                         Route::post('/pegawai/{id}/update', [App\Http\Controllers\UsersController::class, 'update'])->name('update_pegawai');
                         Route::get('/pegawai/{id}/change-status-pegawai', [App\Http\Controllers\UsersController::class, 'change_status'])->name('change_status_pegawai');
                         Route::get('/getDataAkunPegwai', [App\Http\Controllers\UsersController::class, 'getDataAkunPegwai'])->name('getDataAkunPegwai');
-
-                        //new
-                        Route::post('/pegawai/store', [App\Http\Controllers\UsersController::class, 'store'])->name('store_akun_pegawai');
                     }
                 );
                 Route::prefix('master')->group(
@@ -109,7 +104,6 @@ Route::group(
                         Route::get('/soal-test', [App\Http\Controllers\MasterController::class, 'soal_test'])->name('soal_test');
                         Route::post('/soal-test/update', [App\Http\Controllers\MasterController::class, 'update_soal_test'])->name('update_soal_test');
 
-                        //new
                         Route::get('/persyaratan-pendaftaran-umum', [App\Http\Controllers\MasterController::class, 'persyaratan_pendaftaran_umum'])->name('persyaratan_pendaftaran_umum');
                         Route::get('/persyaratan-pendaftaran-Undangan', [App\Http\Controllers\MasterController::class, 'persyaratan_pendaftaran_undangan'])->name('persyaratan_pendaftaran_undangan');
                         Route::get('/persyaratan-pendaftaran-Regular', [App\Http\Controllers\MasterController::class, 'persyaratan_pendaftaran_regular'])->name('persyaratan_pendaftaran_regular');

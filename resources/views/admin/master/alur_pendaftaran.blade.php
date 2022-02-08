@@ -39,8 +39,8 @@ active
                 <form class="forms-sample" method="POST" action="{{ route('update_alur_pendaftaran') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="file">Upload Foto/Gambar (Optional | max. 2 mb)</label>
-                        <input type="file" name="file" class="dropify" data-max-file-size="2M" data-allowed-file-extensions="png jpeg jpg tiff" data-default-file="IMG"  data-height="140" />
+                        <label for="file">Upload Foto/Gambar (Optional | max. 5 mb)</label>
+                        <input type="file" name="file" class="dropify" data-max-file-size="5M" data-allowed-file-extensions="png jpeg jpg tiff" data-default-file="IMG"  data-height="140" />
                     </div>
                     <div class="mt-4 d-flex">
                         <button type="submit" id="submit_button"  class="btn btn-warning mr-2 mb-2 mb-md-0 text-white">

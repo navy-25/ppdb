@@ -73,7 +73,7 @@ Dashboard
                 type: 'bar',
                 data: {
                     datasets: [{
-                        label: 'Progres Harian PPDB',
+                        label: 'Jumlah peserta',
                         data: <?php echo json_encode($data['pendaftar']) ?>,
                         backgroundColor: [
                             'rgb(255, 205, 86)'
@@ -188,12 +188,12 @@ active
             </div>
             <div class="col-4 col-lg-4 col-md-4">
                 <div class="alert alert-success" role="alert" style="font-size: 12px !important;text-align:center">
-                    Lulus: <br> <b style="font-size: 20px !important"><a href="{{ route('peserta_lolos') }}" class="alert-link">{{ $chart['lulus'] }} Peserta</a> </b>
+                    Lulus: <br> <b style="font-size: 20px !important"><a href="{{ route('peserta_lolos') }}" class="alert-link">{{ $chart['lulus'] }}</a> Peserta</b>
                 </div>
             </div>
             <div class="col-4 col-lg-4 col-md-4">
                 <div class="alert alert-danger" role="alert" style="font-size: 12px !important;text-align:center">
-                    Ditolak: <br> <b style="font-size: 20px !important"><a href="{{ route('peserta_reject') }}" class="alert-link">{{ $chart['tidak_lulus'] }} Peserta</a> </b>
+                    Ditolak: <br> <b style="font-size: 20px !important"><a href="{{ route('peserta_reject') }}" class="alert-link">{{ $chart['tidak_lulus'] }}</a> Peserta</b>
                 </div>
             </div>
         </div>

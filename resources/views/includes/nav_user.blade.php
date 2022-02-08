@@ -96,9 +96,9 @@
             <div class="col-12 col-md-10 col-lg-10">
                 <h1 class="mb-3">Penerimaan Peserta Didik Baru (New Student Admission)</h1>
                 <h3 class="text-white">Madrasah Aliyah Negeri 1 Hulu Sungai Tengah</h3>
-                <button class="mt-4 btn btn-green text-white">
+                <a href="{{route('daftar')}}" class="mt-4 btn btn-green text-white">
                     Daftar Sekarang
-                </button>
+                </a>
             </div>
         </div>
     </div>

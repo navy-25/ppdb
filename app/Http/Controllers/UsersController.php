@@ -20,7 +20,6 @@ class UsersController extends Controller
         $data = User::find(Auth::user()->id);
         return view('admin.account.index', compact('data'));
     }
-    //new
     public function store(Request $request)
     {
         try {
@@ -41,7 +40,6 @@ class UsersController extends Controller
             return redirect()->back()->with(['error' => 'Gagal tambahkan, ' . $message]);
         }
     }
-    // end new
     public function update_akun_saya(Request $request)
     {
         try {

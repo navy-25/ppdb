@@ -8,6 +8,9 @@ Form Pendaftaran
         .carousel{display: none;}
         .datepicker{ border-radius: 10px !important; }
         .datepicker:active, .datepicker:focus {border-color: #ff9c22 !important}
+        #spinner{
+            display:none;
+        }
     </style>
     <link rel="stylesheet" href="{{ asset('/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('../../../assets/css/other/dropify.min.css') }}">
@@ -47,6 +50,10 @@ Form Pendaftaran
                 }
             })
         }
+        $("#form_pendaftaran_siswa").submit(function(){
+            document.getElementById('submit_button').disabled = true;
+            $('#spinner').attr("style", "display:block");
+        });
     </script>
 @endsection
 @section('content')
@@ -218,12 +225,12 @@ Form Pendaftaran
                     <div class="card-body">
                         <label class="font-weight-bold mb-3">Berkas Pendaftaran</label>
                         <div class="form-group">
-                            <label for="ijazah">Raport Sem. 1 s/d 5 (PDF | max. 2 mb)*</label>
-                            <input type="file" name="ijazah" class="dropify" data-max-file-size="2M" data-allowed-file-extensions="pdf" data-default-file="PDF"  data-height="140" />
+                            <label for="ijazah">Raport Sem. 1 s/d 5 (PDF | max. 10 mb)*</label>
+                            <input type="file" name="ijazah" class="dropify" data-max-file-size="10M" data-allowed-file-extensions="pdf" data-default-file="PDF"  data-height="140" />
                         </div>
                         <div class="form-group">
-                            <label for="photo">Pas foto 3x4 (.jpg .png .jpeg | max. 2 mb)*</label>
-                            <input type="file" name="photo" class="dropify" data-max-file-size="2M" data-allowed-file-extensions="jpeg png jpg tiff" data-default-file="IMG"  data-height="140" />
+                            <label for="photo">Pas foto 3x4 (.jpg .png .jpeg | max. 5 mb)*</label>
+                            <input type="file" name="photo" class="dropify" data-max-file-size="5M" data-allowed-file-extensions="jpeg png jpg tiff" data-default-file="IMG"  data-height="140" />
                         </div>
                     </div>
                 </div>
@@ -241,11 +248,14 @@ Form Pendaftaran
                     - Informasi lebih lanjut dapat dicek dibagian menu <a target="_blank" href="{{ route('cek_status_pendaftaran') }}">Cek Status Pendaftaran</a> dengan memasukkan nama lengkap anda
                 </label>
                 <div class="mt-4 d-flex">
-                    <button type="button" title="Hapus Data Calon"  id="submit_button"
+                    <button type="button" title="Kirim data pendaftaran"  id="submit_button"
                         onclick="send_form_regis()"
                         class="btn btn-warning mr-2 mb-2 mb-md-0 text-white">
                         Kirim data pendaftaran
                     </button>
+                    <div class="spinner-border text-warning" id="spinner"  role="status">
+                        <span class="visually-hidden"></span>
+                    </div>
                 </div>
             </form>
         </div>
