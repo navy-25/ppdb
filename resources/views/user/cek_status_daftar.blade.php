@@ -92,7 +92,7 @@ Cek Status Pendaftaran
                                             <div class="col-12 col-lg-6 col-mg-6 mb-2">
                                                 <small>Jurusan</small>
                                                 <br>
-                                               <b>{{$x->jurusan}} ({{$x->jalur}})</b>
+                                                <b>{{$x->jurusan}} ({{$x->jalur}})</b>
                                             </div>
                                         </div>
                                     </div>
