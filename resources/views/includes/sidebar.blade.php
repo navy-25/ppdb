@@ -88,13 +88,56 @@
                         <li class="nav-item">
                             <a href="{{ route('cetak_surat') }}" class="nav-link @yield('cetak_surat')">Cetak Surat Pernyataan</a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="" class="nav-link @yield('')">Cetak Data Peserta</a>
-                        </li> --}}
                     </ul>
                 </div>
             </li>
             <li class="nav-item nav-category">Master</li>
+            <li class="nav-item ">
+                <a class="nav-link" data-toggle="collapse" href="#persyaratan" role="button" aria-expanded="false" aria-controls="forms">
+                    <i class="link-icon" data-feather="clipboard"></i>
+                    <span class="link-title">Persyaratan</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="persyaratan">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('persyaratan_pendaftaran_umum') }}" class="nav-link @yield('persyaratan_pendaftaran_umum')">Umum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('persyaratan_pendaftaran_regular') }}" class="nav-link @yield('persyaratan_pendaftaran_regular')">Regular</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('persyaratan_pendaftaran_undangan') }}" class="nav-link @yield('persyaratan_pendaftaran_undangan')">Undangan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('persyaratan_pendaftaran_tempat') }}" class="nav-link @yield('persyaratan_pendaftaran_tempat')">Tempat & Waktu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('persyaratan_pendaftaran_daftar_ulang') }}" class="nav-link @yield('persyaratan_pendaftaran_daftar_ulang')">Daftar Ulang</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('persyaratan_pendaftaran_lain_lain') }}" class="nav-link @yield('persyaratan_pendaftaran_lain_lain')">Lain lain</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" data-toggle="collapse" href="#biaya" role="button" aria-expanded="false" aria-controls="forms">
+                    <i class="link-icon" data-feather="dollar-sign"></i>
+                    <span class="link-title">Biaya</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="biaya">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('biaya_infaq') }}" class="nav-link @yield('biaya_infaq')">Infaq</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('biaya_siswa') }}" class="nav-link @yield('biaya_siswa')">Siswa</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
             <li class="nav-item @yield('jadwal')">
                 <a href="{{ route('jadwal_pendaftaran_admin') }}" class="nav-link">
                     <i class="link-icon" data-feather="calendar"></i>
@@ -120,12 +163,14 @@
                 </a>
             </li>
             <li class="nav-item nav-category">Account</li>
-            <li class="nav-item @yield('akun_pegawai')">
-                <a href="{{ route('akun_pegawai') }}" class="nav-link">
-                    <i class="link-icon" data-feather="user"></i>
-                    <span class="link-title">Akun pegawai</span>
-                </a>
-            </li>
+            @if (Auth::user()->role == "Root")
+                <li class="nav-item @yield('akun_pegawai')">
+                    <a href="{{ route('akun_pegawai') }}" class="nav-link">
+                        <i class="link-icon" data-feather="user"></i>
+                        <span class="link-title">Akun pegawai</span>
+                    </a>
+                </li>
+            @endif
             <li class="nav-item">
                 <a href="{{ route('akun_saya') }}" class="nav-link @yield('akun_saya')">
                     <i class="link-icon" data-feather="settings"></i>

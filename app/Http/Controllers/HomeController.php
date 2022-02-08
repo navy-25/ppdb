@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CalonPeserta;
+use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -48,5 +49,10 @@ class HomeController extends Controller
             $data['pendaftar'][] = CalonPeserta::where('created_at', 'like', '%' . $tahun . '-' . sprintf("%02s", $bulan) . '-' . sprintf("%02s", $i) . '%')->count();
         }
         return view('admin.dashboard', compact('chart', 'data'));
+    }
+    public function getPersyaratanAll()
+    {
+        $data = Persyaratan::orderBy('number', 'ASC')->where('id_category', $_GET['id_category'])->get();
+        return response()->json($data);
     }
 }

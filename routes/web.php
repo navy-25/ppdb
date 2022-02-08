@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('user.index');
 });
 
+Route::get('/getPersyaratanAll', [App\Http\Controllers\HomeController::class, 'getPersyaratanAll'])->name('getPersyaratanAll');
+
 // Auth::routes();
 Auth::routes(['register' => false]);
 Route::prefix('ppdb')->group(
@@ -30,6 +32,9 @@ Route::prefix('ppdb')->group(
         Route::post('/daftar/store', [App\Http\Controllers\LandingController::class, 'form_pendaftaran_siswa'])->name('form_pendaftaran_siswa');
         Route::get('/alur-pendaftaran', [App\Http\Controllers\LandingController::class, 'alur_pendaftaran'])->name('alur_pendaftaran');
         Route::get('/cek-status-pendaftaran', [App\Http\Controllers\LandingController::class, 'cek_status_pendaftaran'])->name('cek_status_pendaftaran');
+
+        //new
+        Route::get('/print-kartu-peserta/{nama_lengkap}/{id}', [App\Http\Controllers\LandingController::class, 'print_kartu_peserta'])->name('print_kartu_peserta');
     }
 );
 Route::group(
@@ -88,6 +93,9 @@ Route::group(
                         Route::post('/pegawai/{id}/update', [App\Http\Controllers\UsersController::class, 'update'])->name('update_pegawai');
                         Route::get('/pegawai/{id}/change-status-pegawai', [App\Http\Controllers\UsersController::class, 'change_status'])->name('change_status_pegawai');
                         Route::get('/getDataAkunPegwai', [App\Http\Controllers\UsersController::class, 'getDataAkunPegwai'])->name('getDataAkunPegwai');
+
+                        //new
+                        Route::post('/pegawai/store', [App\Http\Controllers\UsersController::class, 'store'])->name('store_akun_pegawai');
                     }
                 );
                 Route::prefix('master')->group(
@@ -100,6 +108,25 @@ Route::group(
                         Route::post('/alur-pendaftaran/update', [App\Http\Controllers\MasterController::class, 'update_alur_pendaftaran'])->name('update_alur_pendaftaran');
                         Route::get('/soal-test', [App\Http\Controllers\MasterController::class, 'soal_test'])->name('soal_test');
                         Route::post('/soal-test/update', [App\Http\Controllers\MasterController::class, 'update_soal_test'])->name('update_soal_test');
+
+                        //new
+                        Route::get('/persyaratan-pendaftaran-umum', [App\Http\Controllers\MasterController::class, 'persyaratan_pendaftaran_umum'])->name('persyaratan_pendaftaran_umum');
+                        Route::get('/persyaratan-pendaftaran-Undangan', [App\Http\Controllers\MasterController::class, 'persyaratan_pendaftaran_undangan'])->name('persyaratan_pendaftaran_undangan');
+                        Route::get('/persyaratan-pendaftaran-Regular', [App\Http\Controllers\MasterController::class, 'persyaratan_pendaftaran_regular'])->name('persyaratan_pendaftaran_regular');
+                        Route::get('/persyaratan-pendaftaran-tempat', [App\Http\Controllers\MasterController::class, 'persyaratan_pendaftaran_tempat'])->name('persyaratan_pendaftaran_tempat');
+                        Route::get('/persyaratan-pendaftaran-daftar-ulang', [App\Http\Controllers\MasterController::class, 'persyaratan_pendaftaran_daftar_ulang'])->name('persyaratan_pendaftaran_daftar_ulang');
+                        Route::get('/persyaratan-pendaftaran-lain-lain', [App\Http\Controllers\MasterController::class, 'persyaratan_pendaftaran_lain_lain'])->name('persyaratan_pendaftaran_lain_lain');
+                        Route::get('/persyaratan-pendaftaran/{id}/delete-persyaratan-pendaftaran', [App\Http\Controllers\MasterController::class, 'delete_persyaratan_pendaftaran'])->name('delete_persyaratan_pendaftaran');
+                        Route::get('/getDataPersyaratan/{category}', [App\Http\Controllers\MasterController::class, 'getDataPersyaratan'])->name('getDataPersyaratan');
+                        Route::post('/biaya-pendaftaran/{id}/update-persyaratan-pendaftaran', [App\Http\Controllers\MasterController::class, 'update_persyaratan_pendaftaran'])->name('update_persyaratan_pendaftaran');
+                        Route::post('/biaya-pendaftaran/{category}/store-persyaratan-pendaftaran', [App\Http\Controllers\MasterController::class, 'store_persyaratan_pendaftaran'])->name('store_persyaratan_pendaftaran');
+
+                        Route::get('/biaya-infaq', [App\Http\Controllers\MasterController::class, 'biaya_infaq'])->name('biaya_infaq');
+                        Route::get('/biaya-siswa', [App\Http\Controllers\MasterController::class, 'biaya_siswa'])->name('biaya_siswa');
+                        Route::post('/biaya-pendaftaran/{id}/update-biaya-pendaftaran', [App\Http\Controllers\MasterController::class, 'update_biaya_pendaftaran'])->name('update_biaya_pendaftaran');
+                        Route::post('/biaya-pendaftaran/{category}/store-biaya-pendaftaran', [App\Http\Controllers\MasterController::class, 'store_biaya_pendaftaran'])->name('store_biaya_pendaftaran');
+                        Route::get('/biaya-pendaftaran/{id}/delete-biaya-pendaftaran', [App\Http\Controllers\MasterController::class, 'delete_biaya_pendaftaran'])->name('delete_biaya_pendaftaran');
+                        Route::get('/getDataBiaya/{category}', [App\Http\Controllers\MasterController::class, 'getDataBiaya'])->name('getDataBiaya');
                     }
                 );
             }

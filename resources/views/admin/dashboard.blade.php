@@ -100,13 +100,13 @@ active
     <h5>Data Statistik PPDB</h5>
 </div>
 <div class="row mb-2">
-    <div class="col-12 col-lg-5 col-md-5">
+    <div class="col-12 col-lg-5 col-md-5 order-2 order-lg-1 order-md-1">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-12 col-lg-6 col-md-6 mb-2">
+                            <div class="col-7 col-lg-6 col-md-6 mb-2">
                                 <p class="mb-3">Data Calon Peserta Berdasarkan Jurusan</p>
                                 <table class="table table-hover table-bordered">
                                     <thead>
@@ -135,7 +135,7 @@ active
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-12 col-lg-6 col-md-6 mb-2">
+                            <div class="col-5 col-lg-6 col-md-6 mb-2">
                                 <canvas id="jurusan"  style="width:200px !important;height:200px !important"></canvas>
                             </div>
                         </div>
@@ -146,7 +146,7 @@ active
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-12 col-lg-6 col-md-6 mb-2">
+                            <div class="col-7 col-lg-6 col-md-6 mb-2">
                                 <p class="mb-3">Data Calon Peserta Berdasarkan Jalur</p>
                                 <table class="table table-hover table-bordered">
                                     <thead>
@@ -170,7 +170,7 @@ active
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-6 col-lg-6 col-md-6">
+                            <div class="col-5 col-lg-6 col-md-6">
                                 <canvas id="jalur"></canvas>
                             </div>
                         </div>
@@ -179,21 +179,21 @@ active
             </div>
         </div>
     </div>
-    <div class="col-12 col-lg-7 col-md-7">
+    <div class="col-12 col-lg-7 col-md-7 order-1 order-lg-2 order-md-2">
         <div class="row">
-            <div class="col-12 col-lg-4 col-md-4">
+            <div class="col-4 col-lg-4 col-md-4">
                 <div class="alert alert-primary" role="alert" style="font-size: 12px !important;text-align:center">
                     Total Pendaftar: <br> <b style="font-size: 20px !important">{{ $chart['total_pendaftar'] }} Calon</b>
                 </div>
             </div>
-            <div class="col-12 col-lg-4 col-md-4">
+            <div class="col-4 col-lg-4 col-md-4">
                 <div class="alert alert-success" role="alert" style="font-size: 12px !important;text-align:center">
-                    Lulus: <br> <b style="font-size: 20px !important"><a href="{{ route('peserta_lolos') }}" class="alert-link">{{ $chart['lulus'] }}</a> Peserta</b>
+                    Lulus: <br> <b style="font-size: 20px !important"><a href="{{ route('peserta_lolos') }}" class="alert-link">{{ $chart['lulus'] }} Peserta</a> </b>
                 </div>
             </div>
-            <div class="col-12 col-lg-4 col-md-4">
+            <div class="col-4 col-lg-4 col-md-4">
                 <div class="alert alert-danger" role="alert" style="font-size: 12px !important;text-align:center">
-                    Ditolak: <br> <b style="font-size: 20px !important"><a href="{{ route('peserta_reject') }}" class="alert-link">{{ $chart['tidak_lulus'] }}</a> Peserta</b>
+                    Ditolak: <br> <b style="font-size: 20px !important"><a href="{{ route('peserta_reject') }}" class="alert-link">{{ $chart['tidak_lulus'] }} Peserta</a> </b>
                 </div>
             </div>
         </div>

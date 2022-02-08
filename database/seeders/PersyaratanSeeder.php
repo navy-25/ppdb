@@ -54,67 +54,67 @@ class PersyaratanSeeder extends Seeder
         ]);
         Persyaratan::create([
             'name' => 'Calon peserta didik baru melalui jalur undangan yang direkomendasikan oleh Madrasah/sekolah harus memenuhi kriteria sebagai berikut:',
-            'number' => 3,
-            'id_category' => 2,
-            'sub_persyaratan' => '',
-        ]);
-        Persyaratan::create([
-            'name' => 'Pilihan peminatan IPA, rata rata nilai mata pelajaran IPA dan Matemarika dari semester 1 sampai 5 minimal 81,00 atau rata rata nilainya 80,00 dengan syarat berprestasi dalam lomba Juara (1,2,3) tingkat propinsi atau mewakili sebagai peserta tingkat nasonal dalam cabang lomba (Foto copy bukti dilampirkan)',
-            'number' => 1,
-            'id_category' => 2,
-            'sub_persyaratan' => 7,
-        ]);
-        Persyaratan::create([
-            'name' => 'Pemilihan peminatan IPS, rata rata nilai mata pelajaran IPS dan Matematika dari semester 1 sampai 5 minimal 81,00 atay rata rata nilainya 80,00 dengan syarat berprestasi dalam lomba juara (1,2,3) tingkat propinsi atau mewakili sebagai peserta tingkat nasional dalam cabang lomba (Foto copy bukti dilampirkan)',
-            'number' => 2,
-            'id_category' => 2,
-            'sub_persyaratan' => 7,
-        ]);
-        Persyaratan::create([
-            'name' => 'Pemilihan peminatan IIK (Ilmu ilmu keagamaan), rata rata nilai mata pelajaran PAI (Aqidah-Akhlaq, Qur an Hadits, Fiqih, SKI) dari semester 1 sampai 5 minimal 81,00 atay rata rata nilainya 80,00 dengan syarat berprestasi dalam lomba juara (1,2,3) tingkat propinsi atau mewakili sebagai peserta tingkat nasional dalam cabang lomba (Foto copy bukti dilampirkan)',
-            'number' => 3,
-            'id_category' => 2,
-            'sub_persyaratan' => 7,
-        ]);
-        Persyaratan::create([
-            'name' => 'Melampirkan fotocopy nilai raport semester I,II,III,IV,V sebanyak 1 rangkap yang telah dilegalisir setiap calon peserta didik baru yang direkomendasikan oleh pihak Madrasah',
-            'number' => 3,
-            'id_category' => 2,
-            'sub_persyaratan' => 7,
-        ]);
-        Persyaratan::create([
-            'name' => 'Melampirkan fotocopy kartu keluarga sebanyak 1 lembar (yang ada NIK nya) dan Akta Kelahiran',
             'number' => 4,
             'id_category' => 2,
             'sub_persyaratan' => '',
         ]);
         Persyaratan::create([
-            'name' => 'Melampirkan pas photo ukuran 3x4 sebanyak 2 lembar yang disetempel dii formulir pendaftaran',
+            'name' => 'Pilihan peminatan IPA, rata rata nilai mata pelajaran IPA dan Matemarika dari semester 1 sampai 5 minimal 81,00 atau rata rata nilainya 80,00 dengan syarat berprestasi dalam lomba Juara (1,2,3) tingkat propinsi atau mewakili sebagai peserta tingkat nasonal dalam cabang lomba (Foto copy bukti dilampirkan)',
             'number' => 5,
+            'id_category' => 2,
+            'sub_persyaratan' => 7,
+        ]);
+        Persyaratan::create([
+            'name' => 'Pemilihan peminatan IPS, rata rata nilai mata pelajaran IPS dan Matematika dari semester 1 sampai 5 minimal 81,00 atay rata rata nilainya 80,00 dengan syarat berprestasi dalam lomba juara (1,2,3) tingkat propinsi atau mewakili sebagai peserta tingkat nasional dalam cabang lomba (Foto copy bukti dilampirkan)',
+            'number' => 6,
+            'id_category' => 2,
+            'sub_persyaratan' => 7,
+        ]);
+        Persyaratan::create([
+            'name' => 'Pemilihan peminatan IIK (Ilmu ilmu keagamaan), rata rata nilai mata pelajaran PAI (Aqidah-Akhlaq, Qur an Hadits, Fiqih, SKI) dari semester 1 sampai 5 minimal 81,00 atay rata rata nilainya 80,00 dengan syarat berprestasi dalam lomba juara (1,2,3) tingkat propinsi atau mewakili sebagai peserta tingkat nasional dalam cabang lomba (Foto copy bukti dilampirkan)',
+            'number' => 7,
+            'id_category' => 2,
+            'sub_persyaratan' => 7,
+        ]);
+        Persyaratan::create([
+            'name' => 'Melampirkan fotocopy nilai raport semester I,II,III,IV,V sebanyak 1 rangkap yang telah dilegalisir setiap calon peserta didik baru yang direkomendasikan oleh pihak Madrasah',
+            'number' => 8,
+            'id_category' => 2,
+            'sub_persyaratan' => 7,
+        ]);
+        Persyaratan::create([
+            'name' => 'Melampirkan fotocopy kartu keluarga sebanyak 1 lembar (yang ada NIK nya) dan Akta Kelahiran',
+            'number' => 9,
+            'id_category' => 2,
+            'sub_persyaratan' => '',
+        ]);
+        Persyaratan::create([
+            'name' => 'Melampirkan pas photo ukuran 3x4 sebanyak 2 lembar yang disetempel dii formulir pendaftaran',
+            'number' => 10,
             'id_category' => 2,
             'sub_persyaratan' => '',
         ]);
         Persyaratan::create([
             'name' => 'Semua persyaratan peserta jalur undangan dimasukkan ke dalam satu berkas',
-            'number' => 6,
+            'number' => 11,
             'id_category' => 2,
             'sub_persyaratan' => '',
         ]);
         Persyaratan::create([
             'name' => 'Semua persyaratan dimasukkan kedalam MAP : Warna hijau program IIK, Kuning program IPA, Merah program IPS',
-            'number' => 7,
+            'number' => 12,
             'id_category' => 2,
             'sub_persyaratan' => '',
         ]);
         Persyaratan::create([
             'name' => 'Bagi calon peserta seleksi yang berprestasi juara dalam bidang lomba kejuaraan harus memperlihatkan piagam aslinya',
-            'number' => 8,
+            'number' => 13,
             'id_category' => 2,
             'sub_persyaratan' => '',
         ]);
         Persyaratan::create([
             'name' => 'Photocopi kartu peserta ujian nasional',
-            'number' => 9,
+            'number' => 14,
             'id_category' => 2,
             'sub_persyaratan' => '',
         ]);

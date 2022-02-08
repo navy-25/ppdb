@@ -82,17 +82,32 @@ Cek Status Pendaftaran
                                 <div class="col-12 col-lg-4 col-md-4">
                                     <div class="row">
                                         <div class="col-12 mb-2">
-                                            <button type="button" class="btn btn-green text-white float-right btn-icon-text py-1">
-                                                <i class="text-white" data-feather="printer" width="16" class="btn-icon-prepend"></i>
-                                                <span class="ml-2">Cetak Kartu</span>
-                                            </button>
+                                            @if ($x->status == "Tidak Lulus")
+                                                <button disabled
+                                                    class="btn btn-green text-white float-right btn-icon-text py-1">
+                                                    <i class="text-white" data-feather="printer" width="16" class="btn-icon-prepend"></i>
+                                                    <span class="ml-2">Cetak Kartu</span>
+                                                </button>
+                                            @else
+                                                <a href="{{ route('print_kartu_peserta',['nama_lengkap'=>$x->nama_lengkap,'id'=>$x->id_siswa]) }}" class="btn btn-green text-white float-right btn-icon-text py-1">
+                                                    <i class="text-white" data-feather="printer" width="16" class="btn-icon-prepend"></i>
+                                                    <span class="ml-2">Cetak Kartu</span>
+                                                </a>
+                                            @endif
                                         </div>
                                         <div class="col-12">
                                             @if ($x->jalur == "Regular")
-                                                <a href="{{ asset('assets/uploads/landing/soal_test_regular.pdf') }}" target="_blank"  class="btn btn-secondary text-white float-right btn-icon-text py-1">
-                                                    <i class="text-white" data-feather="file-text" width="16" class="btn-icon-prepend"></i>
-                                                    <span class="ml-2">Download Soal Test</span>
-                                                </a>
+                                                @if ($x->status == "Tidak Lulus" || $x->status == "Lulus")
+                                                    <button disabled class="btn btn-secondary text-white float-right btn-icon-text py-1">
+                                                        <i class="text-white" data-feather="file-text" width="16" class="btn-icon-prepend"></i>
+                                                        <span class="ml-2">Download Soal Test</span>
+                                                    </button>
+                                                @else
+                                                    <a href="{{ asset('assets/uploads/landing/soal_test_regular.pdf') }}" target="_blank"  class="btn btn-secondary text-white float-right btn-icon-text py-1">
+                                                        <i class="text-white" data-feather="file-text" width="16" class="btn-icon-prepend"></i>
+                                                        <span class="ml-2">Download Soal Test</span>
+                                                    </a>
+                                                @endif
                                             @endif
                                         </div>
                                     </div>

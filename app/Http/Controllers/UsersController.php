@@ -20,6 +20,28 @@ class UsersController extends Controller
         $data = User::find(Auth::user()->id);
         return view('admin.account.index', compact('data'));
     }
+    //new
+    public function store(Request $request)
+    {
+        try {
+            if ($request->password != $request->ulangi_password) {
+                return redirect()->back()->with(['error' => 'Gagal, password tidak sama']);
+            } else {
+                $data = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'role' => 'Admin',
+                    'status' => 1,
+                    'password' => Hash::make($request->password),
+                ]);
+            }
+            return redirect()->back()->with(['success' => $data->name . ' berhasil ditambahkan']);
+        } catch (\Throwable $th) {
+            $message = join(" ", array_filter(explode(" ", preg_replace("/[^a-zA-Z.@]/", " ", $th->getMessage()))));
+            return redirect()->back()->with(['error' => 'Gagal tambahkan, ' . $message]);
+        }
+    }
+    // end new
     public function update_akun_saya(Request $request)
     {
         try {

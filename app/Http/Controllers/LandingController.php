@@ -130,4 +130,18 @@ class LandingController extends Controller
             return redirect()->route('daftar')->with(['error' => 'Gagal mengirim data, ' . $message]);
         }
     }
+
+    //new
+    public function print_kartu_peserta($nama_lengkap, $id)
+    {
+        $data = DB::table('siswas as cp')
+            ->select(
+                's.*',
+                'cp.*'
+            )
+            ->join('calon_pesertas as s', 's.id_siswa', 'cp.id')
+            ->where('s.id_siswa', $id)
+            ->first();
+        return view('user.print_kartu_peserta', compact('data'));
+    }
 }

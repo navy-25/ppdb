@@ -28,6 +28,7 @@
     <a href="{{ route('daftar') }}" class="text-decoration-none text-black">
         Daftar
     </a>
+    <hr>
     <a href="{{ route('login') }}" class="text-decoration-none text-black">
         Masuk Admin
     </a>
