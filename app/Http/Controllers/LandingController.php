@@ -7,6 +7,7 @@ use App\Models\CalonPeserta;
 use App\Models\CategoryBiaya;
 use App\Models\CategoryPersyaratan;
 use App\Models\Jadwal;
+use App\Models\JadwalTest;
 use App\Models\Siswa;
 use Database\Seeders\CategoryPersyaratanSeeder;
 use Illuminate\Http\Request;
@@ -45,9 +46,9 @@ class LandingController extends Controller
     public function cek_status_pendaftaran()
     {
         if (isset($_GET['pencarian'])) {
-            if($_GET['pencarian'] == ''){
+            if ($_GET['pencarian'] == '') {
                 $data = null;
-            }else{
+            } else {
                 $data = DB::table('calon_pesertas as cp')
                     ->select(
                         'cp.*',
@@ -64,7 +65,8 @@ class LandingController extends Controller
         } else {
             $data = null;
         }
-        return view('user.cek_status_daftar', compact('data'));
+        $jadwaltest = JadwalTest::first();
+        return view('user.cek_status_daftar', compact('data', 'jadwaltest'));
     }
     public function form_pendaftaran_siswa(Request $request)
     {
@@ -129,7 +131,6 @@ class LandingController extends Controller
             }
             return redirect()->route('cek_status_pendaftaran')->with(['success' => 'Berhasil mengirim data']);
         } catch (\Throwable $th) {
-            // $message = join(" ", array_filter(explode(" ", preg_replace("/[^a-zA-Z.@]/", " ", $th->getMessage()))));
             return redirect()->route('daftar')->with(['error' => 'Gagal, Periksa kembali data yang anda kirim']);
         }
     }

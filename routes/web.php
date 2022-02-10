@@ -121,6 +121,9 @@ Route::group(
                         Route::post('/biaya-pendaftaran/{category}/store-biaya-pendaftaran', [App\Http\Controllers\MasterController::class, 'store_biaya_pendaftaran'])->name('store_biaya_pendaftaran');
                         Route::get('/biaya-pendaftaran/{id}/delete-biaya-pendaftaran', [App\Http\Controllers\MasterController::class, 'delete_biaya_pendaftaran'])->name('delete_biaya_pendaftaran');
                         Route::get('/getDataBiaya/{category}', [App\Http\Controllers\MasterController::class, 'getDataBiaya'])->name('getDataBiaya');
+
+                        Route::get('/jadwal-test', [App\Http\Controllers\MasterController::class, 'jadwal_test'])->name('jadwal_test');
+                        Route::post('/jadwal-test/set', [App\Http\Controllers\MasterController::class, 'jadwal_test_set'])->name('jadwal_test_set');
                     }
                 );
             }

@@ -8,6 +8,7 @@ use App\Models\Booklet;
 use App\Models\CategoryBiaya;
 use App\Models\CategoryPersyaratan;
 use App\Models\Jadwal;
+use App\Models\JadwalTest;
 use App\Models\Persyaratan;
 use App\Models\SoalTest;
 use Illuminate\Http\Request;
@@ -356,6 +357,38 @@ class MasterController extends Controller
                 })
                 ->rawColumns(['action'])
                 ->make(true);
+        }
+    }
+    public function jadwal_test()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $data = JadwalTest::first();
+        return view('admin.master.jadwal_test', compact('data'));
+    }
+    public function jadwal_test_set(Request $request)
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        try {
+            $JadwalTest = JadwalTest::first();
+            if ($JadwalTest == null) {
+                $JadwalTest = JadwalTest::create([
+                    'tanggal_mulai' => $request->tanggal_mulai,
+                    'tanggal_selesai' => $request->tanggal_selesai,
+                    'jam_mulai' => $request->jam_mulai . ':' . $request->menit_mulai,
+                    'jam_selesai' => $request->jam_selesai . ':' . $request->menit_selesai,
+                ]);
+            } else {
+                $JadwalTest->update([
+                    'tanggal_mulai' => $request->tanggal_mulai,
+                    'tanggal_selesai' => $request->tanggal_selesai,
+                    'jam_mulai' => $request->jam_mulai . ':' . $request->menit_mulai,
+                    'jam_selesai' => $request->jam_selesai . ':' . $request->menit_selesai,
+                ]);
+            }
+            return redirect()->back()->with(['success' => 'Jadwal tes berhasil di atur']);
+        } catch (\Throwable $th) {
+            $message = join(" ", array_filter(explode(" ", preg_replace("/[^a-zA-Z.@]/", " ", $th->getMessage()))));
+            return redirect()->back()->with(['error' => 'Gagal mangatur, ' . $message]);
         }
     }
 }

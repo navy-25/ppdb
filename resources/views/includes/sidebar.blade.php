@@ -144,7 +144,13 @@
             <li class="nav-item @yield('jadwal')">
                 <a href="{{ route('jadwal_pendaftaran_admin') }}" class="nav-link">
                     <i class="link-icon" data-feather="calendar"></i>
-                    <span class="link-title">Jadwal</span>
+                    <span class="link-title">Jadwal Pendaftaran</span>
+                </a>
+            </li>
+            <li class="nav-item @yield('jadwal_test')">
+                <a href="{{ route('jadwal_test') }}" class="nav-link">
+                    <i class="link-icon" data-feather="clock"></i>
+                    <span class="link-title">Jadwal Test</span>
                 </a>
             </li>
             <li class="nav-item @yield('booklet')">

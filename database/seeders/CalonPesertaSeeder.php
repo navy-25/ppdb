@@ -24,7 +24,7 @@ class CalonPesertaSeeder extends Seeder
         ]);
         CalonPeserta::create([
             'id_siswa' => 2,
-            'jalur' => 'Undangan',
+            'jalur' => 'Regular',
             'no_peserta' => 'MAN1-00002',
             'no_pendaftaran' => 'REG-00002',
             'jurusan' => 'Agama',
