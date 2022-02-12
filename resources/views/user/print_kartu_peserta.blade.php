@@ -171,7 +171,16 @@
                             <td style="border:0.1px solid black !important">{{ $data->jurusan }}</td>
                             <td style="border:0.1px solid black !important">
                                 @if ($data->jalur == "Regular")
-                                    Soal tes dapat didownload di menu "Cek Status Pendaftaran"
+                                    @php
+                                        $jadwal_tes = \App\Models\JadwalTest::first();
+                                        if($jadwal_tes == null){
+                                            $jt = 'Belum diatur';
+                                        }else{
+                                            $jt = date('d M Y', strtotime($jadwal_tes->tanggal_mulai)).'(Pukul '.$jadwal_tes->jam_mulai.') s/d '.date('d M Y', strtotime($jadwal_tes->tanggal_selesai)).' (Pukul '.$jadwal_tes->jam_selesai.')';
+
+                                        }
+                                    @endphp
+                                    {{$jt}}
                                 @else
                                     Tidak ada
                                 @endif
