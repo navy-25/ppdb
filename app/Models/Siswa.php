@@ -12,6 +12,7 @@ class Siswa extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'photo',
+        'piagam',
         'ijazah',
         'nama_lengkap',
         'tempat_lahir',

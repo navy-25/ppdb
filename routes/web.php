@@ -80,6 +80,7 @@ Route::group(
                         Route::get('/cetak-surat/', [App\Http\Controllers\PendaftarController::class, 'cetak_surat'])->name('cetak_surat');
                         Route::get('/cetak-surat/{id}/orang-tua-wali', [App\Http\Controllers\PendaftarController::class, 'print_sp_wali'])->name('print_sp_wali');
                         Route::get('/cetak-surat/{id}/calon-peserta-didik', [App\Http\Controllers\PendaftarController::class, 'print_sp_calon_peserta_didik'])->name('print_sp_calon_peserta_didik');
+                        Route::get('/cetak-peserta/', [App\Http\Controllers\PendaftarController::class, 'peserta_lolos_print'])->name('peserta_lolos_print');
                         Route::get('/getDataPesertaLolosCetakSurat', [App\Http\Controllers\PendaftarController::class, 'getDataPesertaLolosCetakSurat'])->name('getDataPesertaLolosCetakSurat');
                     }
                 );

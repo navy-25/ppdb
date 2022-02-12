@@ -86,11 +86,11 @@
                 <div class="collapse" id="laporan">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('cetak_surat') }}" class="nav-link @yield('cetak_surat')">Cetak Surat Pernyataan</a>
+                            <a href="{{ route('cetak_surat') }}" class="nav-link @yield('cetak_surat')">Surat Pernyataan</a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="" class="nav-link @yield('')">Cetak Data Peserta</a>
-                        </li> --}}
+                        <li class="nav-item">
+                            <a href="{{ route('peserta_lolos_print') }}" class="nav-link @yield('peserta_lolos_print')">Data Peserta Lulus</a>
+                        </li>
                     </ul>
                 </div>
             </li>

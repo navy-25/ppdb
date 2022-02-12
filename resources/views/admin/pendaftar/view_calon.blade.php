@@ -199,6 +199,31 @@ Biodata Peserta
                                 </tr>
                             </tbody>
                         </table>
+                        <br>
+                        <div class="d-flex">
+                            @if ($data->photo != null || $data->photo != '')
+                                <a download href="{{ asset('assets/uploads/calon siswa/'.$data->photo )}}" target="_blank" class="float-left btn btn-inverse-info btn-print mr-2">
+                                    Download Foto
+                                </a>
+                            @else
+                                <div class="d-flex">
+                                    <button class="float-left btn btn-secondary btn-print mr-2" disabled>
+                                        Download Foto
+                                    </button>
+                                </div>
+                            @endif
+                            @if ($data->ijazah != null || $data->ijazah != '')
+                                <a download href="{{ asset('assets/uploads/calon siswa/'.$data->ijazah )}}" target="_blank" class="float-left btn btn-inverse-warning btn-print">
+                                    Download Ijazah
+                                </a>
+                            @else
+                                <div class="d-flex">
+                                    <button class="float-left btn btn-secondary btn-print mr-2" disabled>
+                                        Download Ijazah
+                                    </button>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="tempat_tinggal">
                         <table  class="table display table-hover table-striped w-100">
@@ -287,6 +312,20 @@ Biodata Peserta
                                 </tr>
                             </tbody>
                         </table>
+                        <br>
+                        @if ($data->piagam != null || $data->piagam != '')
+                            <div class="d-flex">
+                                <a download href="{{ asset('assets/uploads/calon siswa/'.$data->piagam )}}" target="_blank" class="float-left btn btn-inverse-info btn-print mr-2">
+                                    Download Piagam
+                                </a>
+                            </div>
+                        @else
+                            <div class="d-flex">
+                                <button class="float-left btn btn-secondary btn-print mr-2" disabled>
+                                    Download Piagam
+                                </button>
+                            </div>
+                        @endif
                     </div>
                     <div class="tab-pane fade" id="beasiswa">
                         <table  class="table display table-hover table-striped w-100">

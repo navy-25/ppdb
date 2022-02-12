@@ -71,8 +71,55 @@ class LandingController extends Controller
     public function form_pendaftaran_siswa(Request $request)
     {
         try {
+            if ($request->name == null) {
+                return redirect()->back()->with(['error' => 'Gagal, nama lengkap masih kosong']);
+            } else if ($request->tempat_lahir == null) {
+                return redirect()->back()->with(['error' => 'Gagal, tempat lahir masih kosong']);
+            } else if ($request->tanggal_lahir == null) {
+                return redirect()->back()->with(['error' => 'Gagal, tanggal lahir masih kosong']);
+            } else if ($request->jenis_kelamin == null) {
+                return redirect()->back()->with(['error' => 'Gagal, jenis kelamin masih kosong']);
+            } else if ($request->telepon == null) {
+                return redirect()->back()->with(['error' => 'Gagal, telepon masih kosong']);
+            } else if ($request->alamat_sekarang == null) {
+                return redirect()->back()->with(['error' => 'Gagal, alamat masih kosong']);
+            } else if ($request->no_kk == null) {
+                return redirect()->back()->with(['error' => 'Gagal, no kartu keluarga (KK) masih kosong']);
+            } else if ($request->nama_ayah == null) {
+                return redirect()->back()->with(['error' => 'Gagal, nama ayah masih kosong']);
+            } else if ($request->pekerjaan_ayah == null) {
+                return redirect()->back()->with(['error' => 'Gagal, pekerjaan ayah masih kosong']);
+            } else if ($request->penghasilan_ayah == null) {
+                return redirect()->back()->with(['error' => 'Gagal, penghasilan ayah masih kosong']);
+            } else if ($request->nama_ibu == null) {
+                return redirect()->back()->with(['error' => 'Gagal, nama ibu masih kosong']);
+            } else if ($request->pekerjaan_ibu == null) {
+                return redirect()->back()->with(['error' => 'Gagal, pekerjaan ibu masih kosong']);
+            } else if ($request->penghasilan_ibu == null) {
+                return redirect()->back()->with(['error' => 'Gagal, penghasilan ibu masih kosong']);
+            } else if ($request->telepon_wali == null) {
+                return redirect()->back()->with(['error' => 'Gagal, nomor telepon ayah/ibu masih kosong']);
+            } else if ($request->asal_sekolah == null) {
+                return redirect()->back()->with(['error' => 'Gagal, asal sekolah masih kosong']);
+            } else if ($request->nisn == null) {
+                return redirect()->back()->with(['error' => 'Gagal, nisn masih kosong']);
+            } else if ($request->jurusan == null) {
+                return redirect()->back()->with(['error' => 'Gagal, jurusan masih kosong']);
+            } else if ($request->jalur == null) {
+                return redirect()->back()->with(['error' => 'Gagal, jalur masih kosong']);
+            }
+
+            if ($request->ijazah) {
+            } else {
+                return redirect()->back()->with(['error' => 'Gagal, Ijazah masih kosong']);
+            }
+            if ($request->photo) {
+            } else {
+                return redirect()->back()->with(['error' => 'Gagal, Foto masih kosong']);
+            }
             $Siswa = Siswa::create([
                 'ijazah' => $request->ijazah,
+                'piagam' => $request->piagam,
                 'photo' => $request->file_foto,
                 'nama_lengkap' => $request->name,
                 'tempat_lahir' => $request->tempat_lahir,
@@ -91,6 +138,10 @@ class LandingController extends Controller
                 'telepon_ibu' => $request->telepon_wali,
                 'pekerjaan_ibu' => $request->pekerjaan_ibu,
                 'penghasilan_perbulan' => $request->penghasilan_ayah + $request->penghasilan_ibu,
+                'bidang_prestasi' => $request->bidang_prestasi,
+                'tingkat_prestasi' => $request->tingkat_prestasi,
+                'peringkat' => $request->peringkat,
+                'tahun' => $request->tahun,
             ]);
             $max_id =  DB::table('calon_pesertas as d')
                 ->select('d.*')
@@ -114,7 +165,7 @@ class LandingController extends Controller
             if ($request->photo != null) {
                 if ($request->hasFile('photo')) {
                     $file = $request->file('photo');
-                    $filename = $Siswa->id . '_' . $Siswa->nama_lengkap . '.' . $file->getClientOriginalExtension();
+                    $filename = 'foto_' . $Siswa->id . '_' . $Siswa->nama_lengkap . '.' . $file->getClientOriginalExtension();
                     $request->file('photo')->move('assets/uploads/calon siswa/', $filename);
                     $Siswa->photo = $filename;
                     $Siswa->save();
@@ -123,15 +174,24 @@ class LandingController extends Controller
             if ($request->ijazah != null) {
                 if ($request->hasFile('ijazah')) {
                     $file = $request->file('ijazah');
-                    $filename = $Siswa->id . '_' . $Siswa->nama_lengkap . '.' . $file->getClientOriginalExtension();
+                    $filename = 'ijazah_' . $Siswa->id . '_' . $Siswa->nama_lengkap . '.' . $file->getClientOriginalExtension();
                     $request->file('ijazah')->move('assets/uploads/calon siswa/', $filename);
                     $Siswa->ijazah = $filename;
                     $Siswa->save();
                 }
             }
+            if ($request->piagam != null) {
+                if ($request->hasFile('piagam')) {
+                    $file = $request->file('piagam');
+                    $filename = 'piagam_' . $Siswa->id . '_' . $Siswa->nama_lengkap . '.' . $file->getClientOriginalExtension();
+                    $request->file('piagam')->move('assets/uploads/calon siswa/', $filename);
+                    $Siswa->piagam = $filename;
+                    $Siswa->save();
+                }
+            }
             return redirect()->route('cek_status_pendaftaran')->with(['success' => 'Berhasil mengirim data']);
         } catch (\Throwable $th) {
-            return redirect()->route('daftar')->with(['error' => 'Gagal, Periksa kembali data yang anda kirim']);
+            return redirect()->back()->with(['error' => 'Gagal, Periksa kembali data yang anda kirim']);
         }
     }
     public function print_kartu_peserta($nama_lengkap, $id)

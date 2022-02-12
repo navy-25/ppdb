@@ -177,7 +177,6 @@
                                             $jt = 'Belum diatur';
                                         }else{
                                             $jt = date('d M Y', strtotime($jadwal_tes->tanggal_mulai)).'(Pukul '.$jadwal_tes->jam_mulai.') s/d '.date('d M Y', strtotime($jadwal_tes->tanggal_selesai)).' (Pukul '.$jadwal_tes->jam_selesai.')';
-
                                         }
                                     @endphp
                                     {{$jt}}

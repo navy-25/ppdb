@@ -196,6 +196,34 @@ Form Pendaftaran
                 <br>
                 <div class="card">
                     <div class="card-body">
+                        <label class="font-weight-bold mb-3">Prestasi yang pernah diraih</label>
+                        <div class="form-group">
+                            <label for="bidang_prestasi">Bidang Prestasi</label>
+                            <input type="text" class="form-control" id="bidang_prestasi" name="bidang_prestasi" placeholder="Bidang Prestasi" >
+                        </div>
+                        <div class="form-group">
+                            <label for="tingkat_prestasi">Tingkat Prestasi</label>
+                            <input type="text" class="form-control" id="tingkat_prestasi"  name="tingkat_prestasi" placeholder="Tingkat Prestasi" >
+                        </div>
+                        <div class="form-group">
+                            <label for="peringkat">Peringkat yang diraih</label>
+                            <input type="text" class="form-control" id="peringkat" name="peringkat" placeholder="Peringkat yang diraih" >
+                        </div>
+                        <div class="form-group">
+                            <label for="tahun">Tahun meraih prestasi</label>
+                            <input type="text" class="form-control" id="tahun" name="tahun" placeholder="Tahun meraih prestasi" >
+                        </div>
+                        <br>
+                        <label class="font-weight-bold mb-3">Bukti Piagam (.pdf .jpeg .jpg .png | max. 10 mb)</label>
+                        <div class="form-group">
+                            <label for="piagam">Jika ada lebih dari 1 piagam jadikan 1 pdf </label>
+                            <input type="file" name="piagam" class="dropify" data-max-file-size="10M" data-allowed-file-extensions="pdf jpeg png jpg" data-default-file="PDF"  data-height="140" />
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-body">
                         <label class="font-weight-bold mb-3">Jalur Peminatan</label>
                         <div class="row">
                             <div class="col-12 col-lg-6 col-md-6">
@@ -225,7 +253,7 @@ Form Pendaftaran
                     <div class="card-body">
                         <label class="font-weight-bold mb-3">Berkas Pendaftaran</label>
                         <div class="form-group">
-                            <label for="ijazah">Raport Sem. 1 s/d 5 (PDF | max. 10 mb)*</label>
+                            <label for="ijazah">Raport Sem. 1 s/d 5 (.pdf | max. 10 mb)*</label>
                             <input type="file" name="ijazah" class="dropify" data-max-file-size="10M" data-allowed-file-extensions="pdf" data-default-file="PDF"  data-height="140" />
                         </div>
                         <div class="form-group">

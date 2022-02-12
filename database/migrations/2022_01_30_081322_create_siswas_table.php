@@ -16,6 +16,7 @@ class CreateSiswasTable extends Migration
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
             //Identitas diri
+            $table->string('piagam')->nullable();
             $table->string('ijazah')->nullable();
             $table->string('photo')->nullable();
             $table->string('nama_lengkap')->nullable();

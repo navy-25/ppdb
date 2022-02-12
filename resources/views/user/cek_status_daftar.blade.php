@@ -119,22 +119,42 @@ Cek Status Pendaftaran
                                                             target="_blank"
                                                             class="btn btn-danger text-white float-right btn-icon-text py-1">
                                                             <i class="text-white" data-feather="printer" width="16" class="btn-icon-prepend"></i>
-                                                            Surat Pernyataan
+                                                            <span class="ml-2">Surat Pernyataan</span>
                                                         </a>
                                                     </div>
+                                                    @if ($x->jalur == "Regular")
+                                                        @php
+                                                            $nilai_test = \App\Models\NilaiTest::where('id_siswa',$x->id_siswa)->first();
+                                                        @endphp
+                                                        @if ($nilai_test != null)
+                                                            <div class="col-12 mb-2">
+                                                                <button class="btn btn-primary text-white float-right btn-icon-text py-1">
+                                                                    <i class="text-white" data-feather="star" width="16" class="btn-icon-prepend"></i>
+                                                                    <span class="ml-2">Nilai Tes : {{ $nilai_test->nilai }}</span>
+                                                                </button>
+                                                            </div>
+                                                        @else
+                                                            <div class="col-12 mb-2">
+                                                                <button class="btn btn-primary text-white float-right btn-icon-text py-1">
+                                                                    <i class="text-white" data-feather="star" width="16" class="btn-icon-prepend"></i>
+                                                                    <span class="ml-2">Nilai Tes : -</span>
+                                                                </button>
+                                                            </div>
+                                                        @endif
+                                                    @endif
                                                 @elseif ($x->status == "Tidak Lulus")
                                                     <div class="col-12 mb-2">
                                                         <button disabled
-                                                            class="btn btn-green text-white float-right btn-icon-text py-1">
+                                                            class="btn btn-secondary text-white float-right btn-icon-text py-1">
                                                             <i class="text-white" data-feather="printer" width="16" class="btn-icon-prepend"></i>
                                                             <span class="ml-2">Cetak Kartu</span>
                                                         </button>
                                                     </div>
                                                     <div class="col-12 mb-2">
                                                         <button disabled
-                                                            class="btn btn-danger text-white float-right btn-icon-text py-1">
+                                                            class="btn btn-secondary text-white float-right btn-icon-text py-1">
                                                             <i class="text-white" data-feather="printer" width="16" class="btn-icon-prepend"></i>
-                                                                Surat Pernyataan
+                                                            <span class="ml-2">Cetak Kartu</span>
                                                         </button>
                                                     </div>
                                                 @else
@@ -146,9 +166,9 @@ Cek Status Pendaftaran
                                                     </div>
                                                     <div class="col-12 mb-2">
                                                         <button disabled
-                                                            class="btn btn-danger text-white float-right btn-icon-text py-1">
+                                                            class="btn btn-secondary text-white float-right btn-icon-text py-1">
                                                             <i class="text-white" data-feather="printer" width="16" class="btn-icon-prepend"></i>
-                                                                Surat Pernyataan
+                                                                <span class="ml-2">Surat Pernyataan</span>
                                                         </button>
                                                     </div>
                                                     @if ($x->jalur == "Regular")
@@ -169,14 +189,14 @@ Cek Status Pendaftaran
                                                             @endphp
                                                             @if (date('Y-m-d') >= $x && date('H:i')>$time_x)
                                                                 <div class="col-12 mb-2">
-                                                                    <a href="{{ asset('assets/uploads/landing/soal_test_regular.pdf') }}" target="_blank"  class="btn btn-secondary text-white float-right btn-icon-text py-1">
+                                                                    <a href="{{ asset('assets/uploads/landing/soal_test_regular.pdf') }}" target="_blank"  class="btn btn-primary text-white float-right btn-icon-text py-1">
                                                                         <i class="text-white" data-feather="file-text" width="16" class="btn-icon-prepend"></i>
                                                                         <span class="ml-2">Download Soal Test</span>
                                                                     </a>
                                                                 </div>
                                                             @elseif (date('Y-m-d') <= $y && date('H:i')<$time_y)
                                                                 <div class="col-12 mb-2">
-                                                                    <a href="{{ asset('assets/uploads/landing/soal_test_regular.pdf') }}" target="_blank"  class="btn btn-secondary text-white float-right btn-icon-text py-1">
+                                                                    <a href="{{ asset('assets/uploads/landing/soal_test_regular.pdf') }}" target="_blank"  class="btn btn-primary text-white float-right btn-icon-text py-1">
                                                                         <i class="text-white" data-feather="file-text" width="16" class="btn-icon-prepend"></i>
                                                                         <span class="ml-2">Download Soal Test</span>
                                                                     </a>
@@ -191,7 +211,7 @@ Cek Status Pendaftaran
                                                                     </div>
                                                                 @else
                                                                     <div class="col-12 mb-2">
-                                                                        <a href="{{ asset('assets/uploads/landing/soal_test_regular.pdf') }}" target="_blank"  class="btn btn-secondary text-white float-right btn-icon-text py-1">
+                                                                        <a href="{{ asset('assets/uploads/landing/soal_test_regular.pdf') }}" target="_blank"  class="btn btn-primary text-white float-right btn-icon-text py-1">
                                                                             <i class="text-white" data-feather="file-text" width="16" class="btn-icon-prepend"></i>
                                                                             <span class="ml-2">Download Soal Test</span>
                                                                         </a>

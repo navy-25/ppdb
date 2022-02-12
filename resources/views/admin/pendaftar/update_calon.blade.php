@@ -35,7 +35,7 @@ Perbarui Biodata Peserta
 @endsection
 
 @section('content')
-<form id="form_pendaftaran_siswa" method="POST" action="{{ route('update_calon',['id'=>$data->id_siswa]) }}">
+<form id="form_pendaftaran_siswa" method="POST" action="{{ route('update_calon',['id'=>$data->id_siswa]) }}" enctype="multipart/form-data">
     @csrf
     <div class="row mb-3">
         <div class="col-6">
@@ -567,6 +567,58 @@ Perbarui Biodata Peserta
                                 <input type="text" class="form-control {{ $data->nomor_kip == null ? 'null_data' : '' }}" id="nomor_kip" value="{{ $data->nomor_kip }}"  name="nomor_kip" placeholder="Nomor Kartu Indonesia Pintar (KIP)" >
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-12 col-lg-6 col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <label class="font-weight-bold mb-3">Berkas Pendaftaran (optional)</label>
+                    <div class="form-group">
+                        @if ($data->piagam == null || $data->piagam == '')
+                            <label>Bukti Piagam (.pdf .jpeg .jpg .png | max. 10 mb)</label> <br>
+                            <label for="piagam">*Jika ada lebih dari 1 piagam jadikan 1 pdf </label>
+                            <input type="file" name="piagam" class="dropify" data-max-file-size="10M" data-allowed-file-extensions="pdf jpeg png jpg" data-default-file="PDF"  data-height="140" />
+                        @else
+                            <label for="ijazah">Bukti Piagam</label>
+                            <br>
+                            <a download href="{{ asset('assets/uploads/calon siswa/'.$data->piagam )}}" target="_blank" class="btn btn-inverse-info btn-print mr-2">
+                                Download Piagam
+                            </a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <label class="font-weight-bold mb-3">Berkas Pendaftaran (wajib)</label>
+                    <div class="form-group">
+                        @if ($data->ijazah == null || $data->ijazah == '')
+                            <label for="ijazah">Raport Sem. 1 s/d 5 (.pdf | max. 10 mb)*</label>
+                            <input type="file" name="ijazah" class="dropify" data-max-file-size="10M" data-allowed-file-extensions="pdf" data-default-file="PDF"  data-height="140" />
+                        @else
+                            <label for="ijazah">Raport Sem. 1 s/d 5</label>
+                            <br>
+                            <a download href="{{ asset('assets/uploads/calon siswa/'.$data->ijazah )}}" target="_blank" class="btn btn-inverse-info btn-print mr-2">
+                                Download Ijazah
+                            </a>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        @if ($data->photo == null || $data->photo == '')
+                            <label for="photo">Pas foto 3x4 (.jpg .png .jpeg | max. 5 mb)*</label>
+                            <input type="file" name="photo" class="dropify" data-max-file-size="5M" data-allowed-file-extensions="jpeg png jpg tiff" data-default-file="IMG"  data-height="140" />
+                        @else
+                            <label for="photo">Pas foto 3x4</label>
+                            <br>
+                            <a download href="{{ asset('assets/uploads/calon siswa/'.$data->photo )}}" target="_blank" class="btn btn-inverse-warning btn-print mr-2">
+                                Download Foto
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>

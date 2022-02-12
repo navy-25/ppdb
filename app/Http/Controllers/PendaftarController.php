@@ -38,6 +38,15 @@ class PendaftarController extends Controller
     {
         return view('admin.pendaftar.cek_berkas_undangan');
     }
+    public function peserta_lolos_print()
+    {
+        $data = DB::table('calon_pesertas as d')
+            ->select('s.*', 'd.*')
+            ->join('siswas as s', 's.id', 'd.id_siswa')
+            ->where('status', 'Lulus')
+            ->get();
+        return view('admin.pendaftar.peserta_lolos_print', compact('data'));
+    }
     public function input_hasil_tes()
     {
         $data = DB::table('calon_pesertas as d')
@@ -177,6 +186,33 @@ class PendaftarController extends Controller
                 'nomor_pkh' => $request->nomor_pkh,
                 'nomor_kip' => $request->nomor_kip,
             ]);
+            if ($request->photo != null) {
+                if ($request->hasFile('photo')) {
+                    $file = $request->file('photo');
+                    $filename = 'foto_' . $data->id . '_' . $data->nama_lengkap . '.' . $file->getClientOriginalExtension();
+                    $request->file('photo')->move('assets/uploads/calon siswa/', $filename);
+                    $data->photo = $filename;
+                    $data->save();
+                }
+            }
+            if ($request->ijazah != null) {
+                if ($request->hasFile('ijazah')) {
+                    $file = $request->file('ijazah');
+                    $filename = 'ijazah_' . $data->id . '_' . $data->nama_lengkap . '.' . $file->getClientOriginalExtension();
+                    $request->file('ijazah')->move('assets/uploads/calon siswa/', $filename);
+                    $data->ijazah = $filename;
+                    $data->save();
+                }
+            }
+            if ($request->piagam != null) {
+                if ($request->hasFile('piagam')) {
+                    $file = $request->file('piagam');
+                    $filename = 'piagam_' . $data->id . '_' . $data->nama_lengkap . '.' . $file->getClientOriginalExtension();
+                    $request->file('piagam')->move('assets/uploads/calon siswa/', $filename);
+                    $data->piagam = $filename;
+                    $data->save();
+                }
+            }
             return redirect()->back()->with(['success' => $data->name . ' berhasil di perbarui']);
         } catch (\Throwable $th) {
             $message = join(" ", array_filter(explode(" ", preg_replace("/[^a-zA-Z.@]/", " ", $th->getMessage()))));
