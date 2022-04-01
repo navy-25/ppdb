@@ -8,6 +8,16 @@
             timer: 1500
         })
     </script>
+@elseif ($errors->any())
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Kesalahan',
+            text: '{{$errors->first()}}',
+            showConfirmButton: false,
+            timer: 4000
+        })
+    </script>
 @elseif($message = Session::get('error'))
     <script>
         Swal.fire({

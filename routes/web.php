@@ -20,8 +20,16 @@ Route::get('/', function () {
 
 Route::get('/getPersyaratanAll', [App\Http\Controllers\HomeController::class, 'getPersyaratanAll'])->name('getPersyaratanAll');
 Route::get('/', [App\Http\Controllers\LandingController::class, 'index'])->name('web_ppdb');
+
 // Auth::routes();
-Auth::routes(['register' => false]);
+// Auth::routes(['register' => false]);
+
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login.form');
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register.form');
+Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+
 Route::prefix('ppdb')->group(
     function () {
         Route::get('/syarat-pendaftaran', [App\Http\Controllers\LandingController::class, 'syarat_pendaftaran'])->name('syarat_pendaftaran');
