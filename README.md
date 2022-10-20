@@ -7,6 +7,6 @@ How to access Web PPDB (Laravel) with terminal
 6. Back to terminal and write command "php artisan migrate:refresh --seed"
 7. To run the web you can write this command "php artisan serve"
 
-Admin Login
-email = admin123@root.com
+Admin Login <br>
+email = admin123@root.com <br>
 password = admin123
